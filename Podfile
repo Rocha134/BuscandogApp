@@ -1,5 +1,5 @@
 
-platform :ios, '13.0'
+#platform :ios, '12.0'
 
 target 'Buscandog' do
   # Comment the next line if you don't want to use dynamic frameworks
