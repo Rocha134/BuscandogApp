@@ -7,8 +7,8 @@
 
 struct K {
     static let appName = "Buscandog 🐶"
-    static let cellIdentifier = "ReusableCell"
-    static let cellNibName = "MessageCell"
+    static let cellIdentifier = "PostCell"
+    static let cellNibName = "PostTableViewCell"
     static let registerSegue = "RegisterToHome"
     static let loginSegue = "LoginToHome"
     

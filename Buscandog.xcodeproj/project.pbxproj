@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		085643B0AA813B17B14E592D /* Pods_Buscandog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C35C151088591217E6EC1274 /* Pods_Buscandog.framework */; };
+		DA48A80528F879FB00602E37 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA48A80328F879FB00602E37 /* PostTableViewCell.swift */; };
+		DA48A80628F879FB00602E37 /* PostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA48A80428F879FB00602E37 /* PostTableViewCell.xib */; };
 		DA928D7928F77853002787DC /* inicioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA928D7828F77853002787DC /* inicioViewController.swift */; };
 		DAB487F628F8630600A5ADAC /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB487F528F8630600A5ADAC /* RegisterViewController.swift */; };
 		DAB487F828F8631700A5ADAC /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB487F728F8631700A5ADAC /* Constants.swift */; };
@@ -25,6 +27,8 @@
 		C35C151088591217E6EC1274 /* Pods_Buscandog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Buscandog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C365BC3ABA58C83DF9F86F90 /* Pods-Buscandog.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Buscandog.debug.xcconfig"; path = "Target Support Files/Pods-Buscandog/Pods-Buscandog.debug.xcconfig"; sourceTree = "<group>"; };
 		C9773045BC842C1A4AAB845C /* Pods-Buscandog.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Buscandog.release.xcconfig"; path = "Target Support Files/Pods-Buscandog/Pods-Buscandog.release.xcconfig"; sourceTree = "<group>"; };
+		DA48A80328F879FB00602E37 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
+		DA48A80428F879FB00602E37 /* PostTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostTableViewCell.xib; sourceTree = "<group>"; };
 		DA928D7828F77853002787DC /* inicioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = inicioViewController.swift; sourceTree = "<group>"; };
 		DAB487F528F8630600A5ADAC /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		DAB487F728F8631700A5ADAC /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -126,6 +130,8 @@
 			children = (
 				DAD1A28228F766A200733CB3 /* LaunchScreen.storyboard */,
 				DAD1A27D28F766A000733CB3 /* Main.storyboard */,
+				DA48A80328F879FB00602E37 /* PostTableViewCell.swift */,
+				DA48A80428F879FB00602E37 /* PostTableViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -191,6 +197,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DAD1A28428F766A200733CB3 /* LaunchScreen.storyboard in Resources */,
+				DA48A80628F879FB00602E37 /* PostTableViewCell.xib in Resources */,
 				DAD1A28C28F7679700733CB3 /* GoogleService-Info.plist in Resources */,
 				DAD1A28128F766A200733CB3 /* Assets.xcassets in Resources */,
 				DAD1A27F28F766A000733CB3 /* Main.storyboard in Resources */,
@@ -249,6 +256,7 @@
 				DAB487FA28F8640D00A5ADAC /* LoginViewController.swift in Sources */,
 				DAB487F828F8631700A5ADAC /* Constants.swift in Sources */,
 				DAD1A27828F766A000733CB3 /* AppDelegate.swift in Sources */,
+				DA48A80528F879FB00602E37 /* PostTableViewCell.swift in Sources */,
 				DAD1A27A28F766A000733CB3 /* SceneDelegate.swift in Sources */,
 				DA928D7928F77853002787DC /* inicioViewController.swift in Sources */,
 				DAB487FC28F86A3D00A5ADAC /* HomeViewController.swift in Sources */,

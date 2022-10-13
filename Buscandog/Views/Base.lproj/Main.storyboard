@@ -5,6 +5,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -88,7 +89,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1042.0289855072465" y="114.50892857142857"/>
+            <point key="canvasLocation" x="1041" y="115"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="TbS-NA-v6K">
@@ -106,7 +107,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¡Bienvenido de vuelta!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xQC-nO-JZc" customClass="CLTypingLabel" customModule="CLTypingLabel">
-                                <rect key="frame" x="207" y="174" width="0.0" height="0.0"/>
+                                <rect key="frame" x="123.33333333333333" y="174" width="167.66666666666669" height="20.333333333333343"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -172,6 +173,7 @@
                     <connections>
                         <outlet property="emailTextfield" destination="eHx-V2-wk1" id="POl-fK-VUB"/>
                         <outlet property="passwordTextfield" destination="oxx-sC-7rM" id="ebz-ya-eTJ"/>
+                        <outlet property="titleScreen" destination="xQC-nO-JZc" id="Ko8-QS-72U"/>
                         <segue destination="nfa-6r-zq8" kind="show" identifier="LoginToHome" id="uvH-cp-wz9"/>
                     </connections>
                 </viewController>
@@ -321,6 +323,7 @@
                     <connections>
                         <outlet property="emailTextfield" destination="gWC-ek-4Wv" id="Q1A-at-D8d"/>
                         <outlet property="passwordTextfield" destination="rmI-lJ-60d" id="ZxE-k7-ozo"/>
+                        <outlet property="titleScreen" destination="UsI-5c-ddZ" id="xpj-4t-Q0W"/>
                         <segue destination="nfa-6r-zq8" kind="show" identifier="RegisterToHome" id="HaZ-ao-akc"/>
                     </connections>
                 </viewController>
@@ -353,18 +356,43 @@
                     <view key="view" contentMode="scaleToFill" id="1D2-o1-iw8">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4HY-ku-Gtv">
+                                <rect key="frame" x="0.0" y="692" width="414" height="44"/>
+                                <items>
+                                    <barButtonItem title="Item" image="home" id="PzR-gw-XOt"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="BOp-vr-ETI"/>
+                                    <barButtonItem title="Item" image="heart" id="wIb-Nb-pxG"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="8KH-aI-f2R"/>
+                                    <barButtonItem title="Item" image="search" id="CV1-x6-Ltg"/>
+                                </items>
+                            </toolbar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="MUp-nS-hwt">
+                                <rect key="frame" x="0.0" y="44" width="414" height="648"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="gtA-Jh-0j2"/>
                         <color key="backgroundColor" red="0.89019608500000003" green="0.98823523520000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="gtA-Jh-0j2" firstAttribute="trailing" secondItem="MUp-nS-hwt" secondAttribute="trailing" id="4lI-MN-wll"/>
+                            <constraint firstItem="MUp-nS-hwt" firstAttribute="leading" secondItem="gtA-Jh-0j2" secondAttribute="leading" id="FLb-8o-4DS"/>
+                            <constraint firstItem="MUp-nS-hwt" firstAttribute="top" secondItem="gtA-Jh-0j2" secondAttribute="top" id="Ucc-HL-mEy"/>
+                            <constraint firstItem="4HY-ku-Gtv" firstAttribute="trailing" secondItem="gtA-Jh-0j2" secondAttribute="trailing" id="dBt-20-fy8"/>
+                            <constraint firstItem="4HY-ku-Gtv" firstAttribute="top" secondItem="MUp-nS-hwt" secondAttribute="bottom" id="gKi-1B-vey"/>
+                            <constraint firstItem="gtA-Jh-0j2" firstAttribute="bottom" secondItem="4HY-ku-Gtv" secondAttribute="bottom" id="guC-bb-GqY"/>
+                            <constraint firstItem="4HY-ku-Gtv" firstAttribute="leading" secondItem="gtA-Jh-0j2" secondAttribute="leading" id="nJV-wl-cGk"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="W9o-MR-Uv6">
                         <rightBarButtonItems>
                             <barButtonItem id="8bA-Oj-kvm"/>
+                            <barButtonItem title="Mi Perfil" id="xht-Go-PjW"/>
                             <barButtonItem title="Cerrar sesión" id="JVU-3m-yRJ">
                                 <connections>
                                     <action selector="logOutPressed:" destination="nfa-6r-zq8" id="dFm-oR-UkS"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="Mi Perfil" id="xht-Go-PjW"/>
                         </rightBarButtonItems>
                     </navigationItem>
                 </viewController>
@@ -374,15 +402,29 @@
         </scene>
     </scenes>
     <designables>
-        <designable name="RxK-Tv-aLa"/>
-        <designable name="UsI-5c-ddZ"/>
-        <designable name="wal-cM-8Lu"/>
-        <designable name="xQC-nO-JZc"/>
+        <designable name="RxK-Tv-aLa">
+            <size key="intrinsicContentSize" width="247.33333333333334" height="72"/>
+        </designable>
+        <designable name="UsI-5c-ddZ">
+            <size key="intrinsicContentSize" width="386" height="30"/>
+        </designable>
+        <designable name="wal-cM-8Lu">
+            <size key="intrinsicContentSize" width="125.66666666666667" height="56"/>
+        </designable>
+        <designable name="xQC-nO-JZc">
+            <size key="intrinsicContentSize" width="167.66666666666666" height="20.333333333333332"/>
+        </designable>
     </designables>
     <inferredMetricsTieBreakers>
         <segue reference="HaZ-ao-akc"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="heart" width="96.5" height="100"/>
+        <image name="home" width="100" height="100"/>
         <image name="image 2" width="250" height="239.5"/>
+        <image name="search" width="100" height="100"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>
