@@ -29,7 +29,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="by Kairen" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wal-cM-8Lu" customClass="CLTypingLabel" customModule="CLTypingLabel">
-                                        <rect key="frame" x="0.0" y="87" width="126" height="56"/>
+                                        <rect key="frame" x="0.0" y="87" width="125.66666666666667" height="56"/>
                                         <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="35"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -90,10 +90,10 @@
             </objects>
             <point key="canvasLocation" x="1042.0289855072465" y="114.50892857142857"/>
         </scene>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="TbS-NA-v6K">
             <objects>
-                <viewController id="Rj1-9o-FDv" sceneMemberID="viewController">
+                <viewController id="Rj1-9o-FDv" customClass="LoginViewController" customModule="Buscandog" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KKK-tj-A3P">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -106,7 +106,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¡Bienvenido de vuelta!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xQC-nO-JZc" customClass="CLTypingLabel" customModule="CLTypingLabel">
-                                <rect key="frame" x="123.33333333333333" y="174" width="167.66666666666669" height="20.333333333333343"/>
+                                <rect key="frame" x="207" y="174" width="0.0" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -120,7 +120,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eHx-V2-wk1">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1@2.com" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eHx-V2-wk1">
                                         <rect key="frame" x="0.0" y="28.333333333333314" width="300" height="34"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="300" id="ocX-bk-H5y"/>
@@ -134,13 +134,13 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oxx-sC-7rM">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="123456" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oxx-sC-7rM">
                                         <rect key="frame" x="0.0" y="98.666666666666629" width="300" height="34"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="300" id="DWC-3n-Xe3"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                 </subviews>
                             </stackView>
@@ -150,6 +150,9 @@
                                 <buttonConfiguration key="configuration" style="plain" title="Continuar">
                                     <fontDescription key="titleFontDescription" type="boldSystem" pointSize="35"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="loginPressed:" destination="Rj1-9o-FDv" eventType="touchUpInside" id="sly-hA-jby"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="a5o-ca-DmA"/>
@@ -166,15 +169,20 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="nzS-LB-0gR"/>
+                    <connections>
+                        <outlet property="emailTextfield" destination="eHx-V2-wk1" id="POl-fK-VUB"/>
+                        <outlet property="passwordTextfield" destination="oxx-sC-7rM" id="ebz-ya-eTJ"/>
+                        <segue destination="nfa-6r-zq8" kind="show" identifier="LoginToHome" id="uvH-cp-wz9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cGh-YM-rqq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1042" y="852"/>
+            <point key="canvasLocation" x="1803" y="-333"/>
         </scene>
-        <!--View Controller-->
+        <!--Register View Controller-->
         <scene sceneID="CoV-xi-iHB">
             <objects>
-                <viewController id="VDV-kC-xbS" sceneMemberID="viewController">
+                <viewController id="VDV-kC-xbS" customClass="RegisterViewController" customModule="Buscandog" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8Xs-Sj-EDy">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -202,6 +210,9 @@
                                 <buttonConfiguration key="configuration" style="plain" title="Continuar">
                                     <fontDescription key="titleFontDescription" type="boldSystem" pointSize="35"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="registerPressed:" destination="VDV-kC-xbS" eventType="touchUpInside" id="MJT-Bp-3lg"/>
+                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="KC5-Jx-XE4">
                                 <rect key="frame" x="57" y="253" width="300" height="403"/>
@@ -307,10 +318,15 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="MwE-Oi-f1D"/>
+                    <connections>
+                        <outlet property="emailTextfield" destination="gWC-ek-4Wv" id="Q1A-at-D8d"/>
+                        <outlet property="passwordTextfield" destination="rmI-lJ-60d" id="ZxE-k7-ozo"/>
+                        <segue destination="nfa-6r-zq8" kind="show" identifier="RegisterToHome" id="HaZ-ao-akc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zaR-4F-Nl5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1863.7681159420292" y="114.1304347826087"/>
+            <point key="canvasLocation" x="1803" y="525"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ahE-Dy-XxO">
@@ -330,11 +346,42 @@
             </objects>
             <point key="canvasLocation" x="-223" y="115"/>
         </scene>
+        <!--Home View Controller-->
+        <scene sceneID="bRG-Rt-rEW">
+            <objects>
+                <viewController storyboardIdentifier="Home" id="nfa-6r-zq8" customClass="HomeViewController" customModule="Buscandog" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1D2-o1-iw8">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="gtA-Jh-0j2"/>
+                        <color key="backgroundColor" red="0.89019608500000003" green="0.98823523520000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="W9o-MR-Uv6">
+                        <rightBarButtonItems>
+                            <barButtonItem id="8bA-Oj-kvm"/>
+                            <barButtonItem title="Cerrar sesión" id="JVU-3m-yRJ">
+                                <connections>
+                                    <action selector="logOutPressed:" destination="nfa-6r-zq8" id="dFm-oR-UkS"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Mi Perfil" id="xht-Go-PjW"/>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wgH-wk-WXg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2941" y="101"/>
+        </scene>
     </scenes>
     <designables>
         <designable name="RxK-Tv-aLa"/>
+        <designable name="UsI-5c-ddZ"/>
         <designable name="wal-cM-8Lu"/>
+        <designable name="xQC-nO-JZc"/>
     </designables>
+    <inferredMetricsTieBreakers>
+        <segue reference="HaZ-ao-akc"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="image 2" width="250" height="239.5"/>
     </resources>

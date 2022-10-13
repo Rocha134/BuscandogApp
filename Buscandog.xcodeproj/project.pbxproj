@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		085643B0AA813B17B14E592D /* Pods_Buscandog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C35C151088591217E6EC1274 /* Pods_Buscandog.framework */; };
 		DA928D7928F77853002787DC /* inicioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA928D7828F77853002787DC /* inicioViewController.swift */; };
+		DAB487F628F8630600A5ADAC /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB487F528F8630600A5ADAC /* RegisterViewController.swift */; };
+		DAB487F828F8631700A5ADAC /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB487F728F8631700A5ADAC /* Constants.swift */; };
+		DAB487FA28F8640D00A5ADAC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB487F928F8640D00A5ADAC /* LoginViewController.swift */; };
+		DAB487FC28F86A3D00A5ADAC /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB487FB28F86A3D00A5ADAC /* HomeViewController.swift */; };
 		DAD1A27828F766A000733CB3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD1A27728F766A000733CB3 /* AppDelegate.swift */; };
 		DAD1A27A28F766A000733CB3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD1A27928F766A000733CB3 /* SceneDelegate.swift */; };
 		DAD1A27F28F766A000733CB3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAD1A27D28F766A000733CB3 /* Main.storyboard */; };
@@ -22,6 +26,10 @@
 		C365BC3ABA58C83DF9F86F90 /* Pods-Buscandog.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Buscandog.debug.xcconfig"; path = "Target Support Files/Pods-Buscandog/Pods-Buscandog.debug.xcconfig"; sourceTree = "<group>"; };
 		C9773045BC842C1A4AAB845C /* Pods-Buscandog.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Buscandog.release.xcconfig"; path = "Target Support Files/Pods-Buscandog/Pods-Buscandog.release.xcconfig"; sourceTree = "<group>"; };
 		DA928D7828F77853002787DC /* inicioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = inicioViewController.swift; sourceTree = "<group>"; };
+		DAB487F528F8630600A5ADAC /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		DAB487F728F8631700A5ADAC /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		DAB487F928F8640D00A5ADAC /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		DAB487FB28F86A3D00A5ADAC /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		DAD1A27428F766A000733CB3 /* Buscandog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Buscandog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAD1A27728F766A000733CB3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DAD1A27928F766A000733CB3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -97,6 +105,7 @@
 				DAD1A28028F766A200733CB3 /* Assets.xcassets */,
 				DAD1A28528F766A200733CB3 /* Info.plist */,
 				DAD1A28B28F7679700733CB3 /* GoogleService-Info.plist */,
+				DAB487F728F8631700A5ADAC /* Constants.swift */,
 			);
 			path = Buscandog;
 			sourceTree = "<group>";
@@ -105,6 +114,9 @@
 			isa = PBXGroup;
 			children = (
 				DA928D7828F77853002787DC /* inicioViewController.swift */,
+				DAB487F528F8630600A5ADAC /* RegisterViewController.swift */,
+				DAB487F928F8640D00A5ADAC /* LoginViewController.swift */,
+				DAB487FB28F86A3D00A5ADAC /* HomeViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -234,9 +246,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAB487FA28F8640D00A5ADAC /* LoginViewController.swift in Sources */,
+				DAB487F828F8631700A5ADAC /* Constants.swift in Sources */,
 				DAD1A27828F766A000733CB3 /* AppDelegate.swift in Sources */,
 				DAD1A27A28F766A000733CB3 /* SceneDelegate.swift in Sources */,
 				DA928D7928F77853002787DC /* inicioViewController.swift in Sources */,
+				DAB487FC28F86A3D00A5ADAC /* HomeViewController.swift in Sources */,
+				DAB487F628F8630600A5ADAC /* RegisterViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
