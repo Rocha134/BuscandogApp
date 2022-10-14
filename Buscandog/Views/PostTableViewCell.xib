@@ -214,7 +214,18 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="aboutNameLabel" destination="Gkw-6E-xDe" id="mNB-zr-7dE"/>
+                <outlet property="ageLabel" destination="a7m-Pb-7Du" id="uc8-dP-5Cn"/>
+                <outlet property="breedLabel" destination="TNr-rX-RCw" id="MYB-Gm-fzZ"/>
+                <outlet property="colorLabel" destination="45d-Sa-H4C" id="XC4-hM-MN9"/>
+                <outlet property="descriptionLabel" destination="hUZ-m4-ZNj" id="GBP-0q-Kf6"/>
+                <outlet property="heightLabel" destination="KJn-b2-IqV" id="WlR-dg-Yma"/>
+                <outlet property="imagePost" destination="PPP-c0-0qh" id="qi9-It-Rjv"/>
+                <outlet property="nameLabel" destination="mzi-fx-Npp" id="lMP-Ga-sv6"/>
+                <outlet property="placeLabel" destination="xim-B8-YeG" id="2hT-36-CPP"/>
+                <outlet property="postDateLabel" destination="L1V-9j-NNh" id="RR9-1x-Cgx"/>
                 <outlet property="view1" destination="iya-FE-aYJ" id="qbh-W8-V2E"/>
+                <outlet property="weightLabel" destination="H9H-fy-WIw" id="2U2-Pi-GBj"/>
             </connections>
             <point key="canvasLocation" x="508.69565217391306" y="219.30803571428569"/>
         </tableViewCell>

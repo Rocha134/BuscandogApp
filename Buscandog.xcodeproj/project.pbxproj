@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		085643B0AA813B17B14E592D /* Pods_Buscandog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C35C151088591217E6EC1274 /* Pods_Buscandog.framework */; };
+		DA426AA328F89AE600F21FE8 /* Dog.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA426AA228F89AE600F21FE8 /* Dog.swift */; };
+		DA426AA528F8BD3300F21FE8 /* FoundDogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA426AA428F8BD3300F21FE8 /* FoundDogViewController.swift */; };
 		DA48A80528F879FB00602E37 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA48A80328F879FB00602E37 /* PostTableViewCell.swift */; };
 		DA48A80628F879FB00602E37 /* PostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA48A80428F879FB00602E37 /* PostTableViewCell.xib */; };
 		DA928D7928F77853002787DC /* inicioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA928D7828F77853002787DC /* inicioViewController.swift */; };
@@ -27,6 +29,8 @@
 		C35C151088591217E6EC1274 /* Pods_Buscandog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Buscandog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C365BC3ABA58C83DF9F86F90 /* Pods-Buscandog.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Buscandog.debug.xcconfig"; path = "Target Support Files/Pods-Buscandog/Pods-Buscandog.debug.xcconfig"; sourceTree = "<group>"; };
 		C9773045BC842C1A4AAB845C /* Pods-Buscandog.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Buscandog.release.xcconfig"; path = "Target Support Files/Pods-Buscandog/Pods-Buscandog.release.xcconfig"; sourceTree = "<group>"; };
+		DA426AA228F89AE600F21FE8 /* Dog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dog.swift; sourceTree = "<group>"; };
+		DA426AA428F8BD3300F21FE8 /* FoundDogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundDogViewController.swift; sourceTree = "<group>"; };
 		DA48A80328F879FB00602E37 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		DA48A80428F879FB00602E37 /* PostTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostTableViewCell.xib; sourceTree = "<group>"; };
 		DA928D7828F77853002787DC /* inicioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = inicioViewController.swift; sourceTree = "<group>"; };
@@ -76,6 +80,7 @@
 		DA928D7728F77375002787DC /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				DA426AA228F89AE600F21FE8 /* Dog.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -121,6 +126,7 @@
 				DAB487F528F8630600A5ADAC /* RegisterViewController.swift */,
 				DAB487F928F8640D00A5ADAC /* LoginViewController.swift */,
 				DAB487FB28F86A3D00A5ADAC /* HomeViewController.swift */,
+				DA426AA428F8BD3300F21FE8 /* FoundDogViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -258,6 +264,8 @@
 				DAD1A27828F766A000733CB3 /* AppDelegate.swift in Sources */,
 				DA48A80528F879FB00602E37 /* PostTableViewCell.swift in Sources */,
 				DAD1A27A28F766A000733CB3 /* SceneDelegate.swift in Sources */,
+				DA426AA328F89AE600F21FE8 /* Dog.swift in Sources */,
+				DA426AA528F8BD3300F21FE8 /* FoundDogViewController.swift in Sources */,
 				DA928D7928F77853002787DC /* inicioViewController.swift in Sources */,
 				DAB487FC28F86A3D00A5ADAC /* HomeViewController.swift in Sources */,
 				DAB487F628F8630600A5ADAC /* RegisterViewController.swift in Sources */,
