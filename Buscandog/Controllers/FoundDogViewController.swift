@@ -9,8 +9,11 @@ import UIKit
 import FirebaseCore
 import FirebaseAuth
 import FirebaseFirestore
+import FirebaseStorage
 
 class FoundDogViewController: UIViewController{
+    
+    var photoTaken: UIImage?
     
     let db = Firestore.firestore()
     @IBOutlet weak var placeTextField: UITextField!
@@ -28,6 +31,50 @@ class FoundDogViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    private func uploadPhotoToFirebase(){
+        //1. Asegurar que la foto exista
+        guard let imageSaved = photoTaken,
+              let imageSavedData: Data = imageSaved.jpegData(compressionQuality: 0.1) else{
+                  
+                  return
+              }
+        
+        //CONFIGURACION PARA GUARDAR LA FOTO EN FIREBASE
+        let metaDataConfig = StorageMetadata()
+        metaDataConfig.contentType = "image/jpg"
+        
+        //Crear una referencia al storage de firebase
+        let storage = Storage.storage()
+        
+        
+        //Crear nombre de la imagen a subir
+        if let usuarioActual = Auth.auth().currentUser?.email{
+            let imageName = usuarioActual as String + String(Date().timeIntervalSince1970)
+            //Referencia a la carpeta donde se va a guardar la foto
+            let folderReference = storage.reference(withPath: "fotosDePerros/\(imageName).jpg")
+            //Subir la foto a Firebase
+            DispatchQueue.global(qos: .background).async {
+                folderReference.putData(imageSavedData, metadata: metaDataConfig) { (metaData: StorageMetadata?, error: Error?) in
+                    DispatchQueue.main.async {
+                        //Detener la carga
+                        if let error = error{
+                            print(error.localizedDescription)
+                            return
+                        }
+                        //obtener la URL de descarga
+                        folderReference.downloadURL { (url: URL?, error: Error?) in
+                            print(url?.absoluteString ?? "")
+                        }
+                    }
+                }
+            }
+        }
+        
+      
+        
+        
     }
     
     private func openCamera(){
@@ -107,10 +154,11 @@ extension FoundDogViewController: UIImagePickerControllerDelegate, UINavigationC
         //cerrar la cámara
         imagePicker?.dismiss(animated: true, completion: nil)
         
-        /*if info.keys.contains(.originalImage){
+        if info.keys.contains(.originalImage){
             //previewImageView.isHidden = false
          //obtenemos la imagen tomada
-            //previewImageView.image = info[.originalImage] as? UIImage
-        }*/
+            photoTaken = info[.originalImage] as? UIImage
+            uploadPhotoToFirebase()
+        }
     }
 }

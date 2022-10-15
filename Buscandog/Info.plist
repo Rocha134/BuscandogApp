@@ -24,10 +24,6 @@
     <string>LaunchScreen</string>
     <key>UIMainStoryboardFile</key>
     <string>Welcome</string>
-    <key>UIRequiredDeviceCapabilities</key>
-    <array>
-        <string>arm7</string>
-    </array>
     <key>UISupportedInterfaceOrientations</key>
     <array>
         <string>UISupportedInterfaceOrientationPortrait</string>

@@ -13,6 +13,7 @@ target 'Buscandog' do
   pod 'FirebaseAuth'
   pod 'FirebaseFirestore'
   pod 'Firebase'
+  pod 'FirebaseStorage'
   pod 'IQKeyboardManager'
 
 end
