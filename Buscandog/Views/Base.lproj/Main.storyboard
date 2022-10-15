@@ -641,7 +641,7 @@
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="photo" catalog="system" title=""/>
                                                 <connections>
-                                                    <action selector="photoButton:" destination="gwJ-0n-z2e" eventType="touchUpInside" id="jYV-Xv-DsB"/>
+                                                    <action selector="photoButton:" destination="gwJ-0n-z2e" eventType="touchUpInside" id="21x-HJ-aZg"/>
                                                 </connections>
                                             </button>
                                         </subviews>

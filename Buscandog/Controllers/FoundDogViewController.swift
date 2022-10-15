@@ -21,12 +21,34 @@ class FoundDogViewController: UIViewController{
     @IBOutlet weak var sexTextField: UITextField!
     @IBOutlet weak var descriptionTextField: UITextField!
     
+    //MARK: -Properties
+    
+    private var imagePicker: UIImagePickerController?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
-    @IBAction func photoButton(_ sender: UIButton) {
+    private func openCamera(){
+        imagePicker = UIImagePickerController()
+        imagePicker?.sourceType = .camera
+        imagePicker?.cameraFlashMode = .off
+        imagePicker?.cameraCaptureMode = .photo
+        imagePicker?.allowsEditing = true
+        imagePicker?.delegate = self
         
+        guard let imagePicker = imagePicker else {
+            return
+        }
+        
+        present(imagePicker, animated: true, completion: nil)
+
+    }
+    
+    
+    @IBAction func photoButton(_ sender: UIButton) {
+        openCamera()
     }
     
     @IBAction func sendPressed(_ sender: UIButton) {
@@ -74,4 +96,21 @@ class FoundDogViewController: UIViewController{
         }
     }
     
+}
+
+//MARK: -UIImagePickerControllerDelegate
+extension FoundDogViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+    
+    //cuando se toma o no se toma la foto
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        //cerrar la cámara
+        imagePicker?.dismiss(animated: true, completion: nil)
+        
+        /*if info.keys.contains(.originalImage){
+            //previewImageView.isHidden = false
+         //obtenemos la imagen tomada
+            //previewImageView.image = info[.originalImage] as? UIImage
+        }*/
+    }
 }
