@@ -23,5 +23,6 @@ struct K {
         static let colorField = "color"
         static let descriptionField = "description"
         static let postMakerField = "postMaker"
+        static let urlField = "url"
     }
 }

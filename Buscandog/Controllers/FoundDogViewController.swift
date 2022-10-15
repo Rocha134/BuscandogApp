@@ -14,6 +14,7 @@ import FirebaseStorage
 class FoundDogViewController: UIViewController{
     
     var photoTaken: UIImage?
+    var urlGlobal : String?
     
     let db = Firestore.firestore()
     @IBOutlet weak var placeTextField: UITextField!
@@ -66,6 +67,7 @@ class FoundDogViewController: UIViewController{
                         //obtener la URL de descarga
                         folderReference.downloadURL { (url: URL?, error: Error?) in
                             print(url?.absoluteString ?? "")
+                            self.urlGlobal = url?.absoluteString
                         }
                     }
                 }
@@ -123,7 +125,8 @@ class FoundDogViewController: UIViewController{
                  K.FStore.sexField: dogSex,
                  K.FStore.descriptionField: dogDescription,
                  K.FStore.postMakerField: dogPostMaker,
-                 K.FStore.dateField: Date().timeIntervalSince1970
+                 K.FStore.dateField: Date().timeIntervalSince1970,
+                 K.FStore.urlField: urlGlobal!
                 ]) { (error) in
                 if let e = error {
                     print("There was an issue saving data to Firestore, \(e)")
