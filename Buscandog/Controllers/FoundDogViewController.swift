@@ -25,6 +25,9 @@ class FoundDogViewController: UIViewController{
         super.viewDidLoad()
     }
     
+    @IBAction func photoButton(_ sender: UIButton) {
+        
+    }
     
     @IBAction func sendPressed(_ sender: UIButton) {
         if let dogPlace = placeTextField.text,

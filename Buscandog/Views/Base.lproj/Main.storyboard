@@ -107,7 +107,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¡Bienvenido de vuelta!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xQC-nO-JZc" customClass="CLTypingLabel" customModule="CLTypingLabel">
-                                <rect key="frame" x="207" y="174" width="0.0" height="0.0"/>
+                                <rect key="frame" x="123.33333333333333" y="174" width="167.66666666666669" height="20.333333333333343"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -646,6 +646,9 @@
                                                 <rect key="frame" x="344" y="165.66666666666669" width="10" height="30.666666666666657"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="photo" catalog="system" title=""/>
+                                                <connections>
+                                                    <action selector="photoButton:" destination="gwJ-0n-z2e" eventType="touchUpInside" id="jYV-Xv-DsB"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -698,10 +701,18 @@
         </scene>
     </scenes>
     <designables>
-        <designable name="RxK-Tv-aLa"/>
-        <designable name="UsI-5c-ddZ"/>
-        <designable name="wal-cM-8Lu"/>
-        <designable name="xQC-nO-JZc"/>
+        <designable name="RxK-Tv-aLa">
+            <size key="intrinsicContentSize" width="247.33333333333334" height="72"/>
+        </designable>
+        <designable name="UsI-5c-ddZ">
+            <size key="intrinsicContentSize" width="386" height="30"/>
+        </designable>
+        <designable name="wal-cM-8Lu">
+            <size key="intrinsicContentSize" width="125.66666666666667" height="56"/>
+        </designable>
+        <designable name="xQC-nO-JZc">
+            <size key="intrinsicContentSize" width="167.66666666666666" height="20.333333333333332"/>
+        </designable>
     </designables>
     <inferredMetricsTieBreakers>
         <segue reference="uvH-cp-wz9"/>
