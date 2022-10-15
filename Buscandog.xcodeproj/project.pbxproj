@@ -12,6 +12,7 @@
 		DA426AA528F8BD3300F21FE8 /* FoundDogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA426AA428F8BD3300F21FE8 /* FoundDogViewController.swift */; };
 		DA48A80528F879FB00602E37 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA48A80328F879FB00602E37 /* PostTableViewCell.swift */; };
 		DA48A80628F879FB00602E37 /* PostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA48A80428F879FB00602E37 /* PostTableViewCell.xib */; };
+		DA4D96DE28FB661D00F8A7F9 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4D96DD28FB661D00F8A7F9 /* DetailsViewController.swift */; };
 		DA928D7928F77853002787DC /* inicioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA928D7828F77853002787DC /* inicioViewController.swift */; };
 		DAB487F628F8630600A5ADAC /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB487F528F8630600A5ADAC /* RegisterViewController.swift */; };
 		DAB487F828F8631700A5ADAC /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB487F728F8631700A5ADAC /* Constants.swift */; };
@@ -32,6 +33,7 @@
 		DA426AA428F8BD3300F21FE8 /* FoundDogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundDogViewController.swift; sourceTree = "<group>"; };
 		DA48A80328F879FB00602E37 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		DA48A80428F879FB00602E37 /* PostTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostTableViewCell.xib; sourceTree = "<group>"; };
+		DA4D96DD28FB661D00F8A7F9 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		DA928D7828F77853002787DC /* inicioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = inicioViewController.swift; sourceTree = "<group>"; };
 		DAB487F528F8630600A5ADAC /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		DAB487F728F8631700A5ADAC /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 				DAB487F928F8640D00A5ADAC /* LoginViewController.swift */,
 				DAB487FB28F86A3D00A5ADAC /* HomeViewController.swift */,
 				DA426AA428F8BD3300F21FE8 /* FoundDogViewController.swift */,
+				DA4D96DD28FB661D00F8A7F9 /* DetailsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -265,6 +268,7 @@
 				DA928D7928F77853002787DC /* inicioViewController.swift in Sources */,
 				DAB487FC28F86A3D00A5ADAC /* HomeViewController.swift in Sources */,
 				DAB487F628F8630600A5ADAC /* RegisterViewController.swift in Sources */,
+				DA4D96DE28FB661D00F8A7F9 /* DetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

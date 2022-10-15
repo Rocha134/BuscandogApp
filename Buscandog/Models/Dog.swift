@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct Dog{
     let place : String
@@ -15,4 +16,5 @@ struct Dog{
     let height : String
     let color : String
     let description : String
+    let image : UIImage
 }

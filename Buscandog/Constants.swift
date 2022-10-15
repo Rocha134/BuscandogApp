@@ -11,6 +11,7 @@ struct K {
     static let cellNibName = "PostTableViewCell"
     static let registerSegue = "RegisterToHome"
     static let loginSegue = "LoginToHome"
+    static let postDetailSegue = "postDetailSegue"
     
     struct FStore {
         static let collectionName = "dogs"
