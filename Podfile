@@ -1,5 +1,4 @@
-
-#platform :ios, '12.0'
+platform :ios, '10.3'
 
 target 'Buscandog' do
   # Comment the next line if you don't want to use dynamic frameworks
@@ -13,7 +12,6 @@ target 'Buscandog' do
 # For example, to use Firebase Authentication and Cloud Firestore
   pod 'FirebaseAuth'
   pod 'FirebaseFirestore'
-  pod 'CLTypingLabel', '~> 0.4.0'
   pod 'Firebase'
   pod 'IQKeyboardManager'
 

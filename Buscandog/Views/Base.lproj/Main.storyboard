@@ -23,13 +23,13 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="b2s-6d-aAV">
                                 <rect key="frame" x="83.333333333333329" y="299.66666666666669" width="247.33333333333337" height="143"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Buscandog 🐶" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RxK-Tv-aLa" customClass="CLTypingLabel" customModule="CLTypingLabel">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Buscandog 🐶" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RxK-Tv-aLa">
                                         <rect key="frame" x="0.0" y="0.0" width="247.33333333333334" height="72"/>
                                         <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="45"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="by Kairen" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wal-cM-8Lu" customClass="CLTypingLabel" customModule="CLTypingLabel">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="by Kairen" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wal-cM-8Lu">
                                         <rect key="frame" x="0.0" y="87" width="125.66666666666667" height="56"/>
                                         <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="35"/>
                                         <nil key="textColor"/>
@@ -82,10 +82,6 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="yjh-c0-Dnm"/>
-                    <connections>
-                        <outlet property="title2" destination="wal-cM-8Lu" id="HVH-pS-z7F"/>
-                        <outlet property="titleScreen" destination="RxK-Tv-aLa" id="RLH-V5-er2"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -173,7 +169,6 @@
                     <connections>
                         <outlet property="emailTextfield" destination="eHx-V2-wk1" id="POl-fK-VUB"/>
                         <outlet property="passwordTextfield" destination="oxx-sC-7rM" id="ebz-ya-eTJ"/>
-                        <outlet property="titleScreen" destination="xQC-nO-JZc" id="Ko8-QS-72U"/>
                         <segue destination="nfa-6r-zq8" kind="show" identifier="LoginToHome" id="uvH-cp-wz9"/>
                     </connections>
                 </viewController>
@@ -323,7 +318,6 @@
                     <connections>
                         <outlet property="emailTextfield" destination="gWC-ek-4Wv" id="Q1A-at-D8d"/>
                         <outlet property="passwordTextfield" destination="rmI-lJ-60d" id="ZxE-k7-ozo"/>
-                        <outlet property="titleScreen" destination="UsI-5c-ddZ" id="xpj-4t-Q0W"/>
                         <segue destination="nfa-6r-zq8" kind="show" identifier="RegisterToHome" id="HaZ-ao-akc"/>
                     </connections>
                 </viewController>
@@ -700,20 +694,6 @@
             <point key="canvasLocation" x="4666.666666666667" y="98.641304347826093"/>
         </scene>
     </scenes>
-    <designables>
-        <designable name="RxK-Tv-aLa">
-            <size key="intrinsicContentSize" width="247.33333333333334" height="72"/>
-        </designable>
-        <designable name="UsI-5c-ddZ">
-            <size key="intrinsicContentSize" width="386" height="30"/>
-        </designable>
-        <designable name="wal-cM-8Lu">
-            <size key="intrinsicContentSize" width="125.66666666666667" height="56"/>
-        </designable>
-        <designable name="xQC-nO-JZc">
-            <size key="intrinsicContentSize" width="167.66666666666666" height="20.333333333333332"/>
-        </designable>
-    </designables>
     <inferredMetricsTieBreakers>
         <segue reference="uvH-cp-wz9"/>
     </inferredMetricsTieBreakers>

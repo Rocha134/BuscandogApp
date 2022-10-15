@@ -8,19 +8,14 @@
 import UIKit
 import FirebaseCore
 import FirebaseAuth
-import CLTypingLabel
 
 class RegisterViewController: UIViewController {
     
     @IBOutlet weak var emailTextfield: UITextField!
     @IBOutlet weak var passwordTextfield: UITextField!
     
-    @IBOutlet weak var titleScreen: CLTypingLabel!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        titleScreen.text = "¡Ayúdanos a ayudar a tus mascotas!"
     }
     
     

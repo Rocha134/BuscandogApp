@@ -8,19 +8,16 @@
 import UIKit
 import FirebaseCore
 import FirebaseAuth
-import CLTypingLabel
 
 class LoginViewController: UIViewController {
     
     @IBOutlet weak var emailTextfield: UITextField!
     @IBOutlet weak var passwordTextfield: UITextField!
     
-    @IBOutlet weak var titleScreen: CLTypingLabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        titleScreen.text = "¡Bienvenido de vuelta!"
     }
     
     
