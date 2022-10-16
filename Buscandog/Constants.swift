@@ -12,6 +12,7 @@ struct K {
     static let registerSegue = "RegisterToHome"
     static let loginSegue = "LoginToHome"
     static let postDetailSegue = "postDetailSegue"
+    static let reportHomeSegue = "reportToHomeSegue"
     
     struct FStore {
         static let collectionName = "dogs"

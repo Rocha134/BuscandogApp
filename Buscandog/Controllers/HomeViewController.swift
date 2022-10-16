@@ -87,19 +87,8 @@ class HomeViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == K.postDetailSegue{
             if let nextViewController = segue.destination as? DetailsViewController{
-                print(dogs[dogSelected!].sex)
-                print(dogs[dogSelected!].sex)
-                print(dogs[dogSelected!].breed)
-                print(dogs[dogSelected!].weight)
-                print(dogs[dogSelected!].height)
-                print(dogs[dogSelected!].color)
-                
-                nextViewController.image = dogs[dogSelected!].image
-                nextViewController.sex = dogs[dogSelected!].sex
-                nextViewController.breed = dogs[dogSelected!].breed
-                nextViewController.weight = dogs[dogSelected!].weight
-                nextViewController.height = dogs[dogSelected!].height
-                nextViewController.color = dogs[dogSelected!].color
+                nextViewController.longitude = dogs[dogSelected!].longitude
+                nextViewController.latitude = dogs[dogSelected!].latitude
             }
             
             /*@IBOutlet weak var map: MKMapView!

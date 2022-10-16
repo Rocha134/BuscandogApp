@@ -163,6 +163,7 @@ class FoundDogViewController: UIViewController{
                         self.colorTextField.text = ""
                         self.sexTextField.text = ""
                         self.descriptionTextField.text = ""
+                        self.performSegue(withIdentifier: K.reportHomeSegue, sender: self)
                     }
                 }
             }

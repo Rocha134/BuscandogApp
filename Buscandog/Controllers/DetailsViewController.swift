@@ -9,33 +9,47 @@ import UIKit
 import MapKit
 
 class DetailsViewController: UIViewController{
-    @IBOutlet weak var map: MKMapView!
-    @IBOutlet weak var sexLabel: UILabel!
-    @IBOutlet weak var breedLabel: UILabel!
-    @IBOutlet weak var weightLabel: UILabel!
-    @IBOutlet weak var heightLabel: UILabel!
-    @IBOutlet weak var colorLabel: UILabel!
-    @IBOutlet weak var imageImageView: UIImageView!
-    
-    var image: UIImage?
-    var sex: String = ""
-    var breed: String = ""
-    var weight: String = ""
-    var height: String = ""
-    var color: String = ""
+    @IBOutlet weak var view1: UIView!
+    var latitude: Double = 0.0
+    var longitude: Double = 0.0
+    var map: MKMapView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        imageImageView.image = image
-        sexLabel.text = sex
-        breedLabel.text = breed
-        weightLabel.text = weight
-        heightLabel.text = height
-        colorLabel.text = color
+        view1.layer.cornerRadius = view1.frame.size.height / 5
     }
     
-    
-    @IBAction func sendNumber(_ sender: UIButton) {
+    override func viewDidAppear(_ animated: Bool) {
+        
+        setupMap()
     }
     
+    func setupMap(){
+        map = MKMapView(frame: view1.bounds)
+        
+        view1.addSubview(map ?? UIView())
+        
+        setupMarker()
+    }
+    
+    func setupMarker(){
+        let marker = MKPointAnnotation()
+        marker.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        
+        marker.title = "Perro encontrado"
+        marker.subtitle = "Aquí"
+        
+        map?.addAnnotation(marker)
+        
+        let location = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        
+        guard let heading = CLLocationDirection(exactly: 12) else {
+            return
+        }
+        
+        map?.camera = MKMapCamera(lookingAtCenter: location, fromDistance: 30, pitch: .zero, heading: heading)
+    }
+    
+    @IBAction func sendNumber(_ sender: UIBarButtonItem) {
+    }
 }
