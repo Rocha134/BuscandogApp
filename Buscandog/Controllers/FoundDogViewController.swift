@@ -18,6 +18,7 @@ class FoundDogViewController: UIViewController{
     var urlGlobal : String?
     var longitudeGlobal = 0.0
     var latitudeGlobal = 0.0
+    var sexGlobal = "Macho"
     private var locationManager: CLLocationManager?
     private var userLocation: CLLocation?
     
@@ -26,9 +27,13 @@ class FoundDogViewController: UIViewController{
     @IBOutlet weak var weightTextField: UITextField!
     @IBOutlet weak var heightTextField: UITextField!
     @IBOutlet weak var colorTextField: UITextField!
-    @IBOutlet weak var sexTextField: UITextField!
+    @IBOutlet weak var sexSelector: UISegmentedControl!
     @IBOutlet weak var descriptionTextField: UITextField!
     
+    @IBAction func changeSexAction(_ sender: UISegmentedControl) {
+        let index = sexSelector.selectedSegmentIndex
+        sexGlobal = sexSelector.titleForSegment(at: index) ?? "Macho"
+    }
     //MARK: -Properties
     
     private var imagePicker: UIImagePickerController?
@@ -130,8 +135,6 @@ class FoundDogViewController: UIViewController{
            heightTextField.text != "",
            let dogColor = colorTextField.text,
            colorTextField.text != "",
-           let dogSex = sexTextField.text,
-           sexTextField.text != "",
            let dogDescription = descriptionTextField.text,
            descriptionTextField.text != "",
            let dogImage = urlGlobal,
@@ -144,7 +147,7 @@ class FoundDogViewController: UIViewController{
                  K.FStore.weightField: dogWeight,
                  K.FStore.heightField: dogHeight,
                  K.FStore.colorField: dogColor,
-                 K.FStore.sexField: dogSex,
+                 K.FStore.sexField: sexGlobal,
                  K.FStore.latitudeField: latitudeGlobal,
                  K.FStore.longitudeField: longitudeGlobal,
                  K.FStore.descriptionField: dogDescription,
@@ -161,7 +164,7 @@ class FoundDogViewController: UIViewController{
                         self.weightTextField.text = ""
                         self.heightTextField.text = ""
                         self.colorTextField.text = ""
-                        self.sexTextField.text = ""
+                        //self.sexTextField.text = ""
                         self.descriptionTextField.text = ""
                         self.performSegue(withIdentifier: K.reportHomeSegue, sender: self)
                     }

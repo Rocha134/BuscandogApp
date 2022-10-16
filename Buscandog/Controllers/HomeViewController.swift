@@ -13,7 +13,6 @@ import FirebaseFirestore
 class HomeViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var messageTextfield: UITextField!
     
     var dogSelected: Int?
     
@@ -29,7 +28,11 @@ class HomeViewController: UIViewController {
         navigationItem.hidesBackButton = true
         tableView.register(UINib.init(nibName: K.cellNibName, bundle: nil), forCellReuseIdentifier: K.cellIdentifier)
         
-        if dogs.count > 0{
+        let dogAntiError = Dog(sex: "Macho", breed: "Raza", weight: "Peso", height: "Altura", color: "Color", description: "Descripcion", image: UIImage(named: "logoWhite")!, latitude: 1.0, longitude: 1.0)
+        
+        dogs.append(dogAntiError)
+        
+        if dogs.count > 0 {
             loadPosts()
         }
         
@@ -37,6 +40,7 @@ class HomeViewController: UIViewController {
     
     //CARGAR LA INFORMACIÓN DE LA BASE DE DATOS
     func loadPosts(){
+        
         dogs = []
         
         db.collection(K.FStore.collectionName).order(by: K.FStore.dateField, descending: true)
