@@ -112,6 +112,9 @@ class HomeViewController: UIViewController {
 }
 
 func procesarUrlAImagen(link : String) -> UIImage {
+    if link == ""{
+        return UIImage(named: "logoWhite")!
+    }
     let ImageUrl:URL = URL(string: link)!
     let imageData = try? Data(contentsOf: ImageUrl)
     return UIImage(data: imageData!)!
