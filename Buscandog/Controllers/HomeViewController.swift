@@ -29,7 +29,9 @@ class HomeViewController: UIViewController {
         navigationItem.hidesBackButton = true
         tableView.register(UINib.init(nibName: K.cellNibName, bundle: nil), forCellReuseIdentifier: K.cellIdentifier)
         
-        loadPosts()
+        if dogs.count > 0{
+            loadPosts()
+        }
         
     }
     

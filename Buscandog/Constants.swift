@@ -27,5 +27,13 @@ struct K {
         static let urlField = "url"
         static let latitudeField = "latitude"
         static let longitudeField = "longitude"
+        
+        static let collectionNameUsers = "users"
+        static let nameField = "name"
+        static let lastNameField = "lastName"
+        static let cellPhoneNumberField = "cellPhoneNumber"
+        static let emailField = "email"
+        static let accountCreatedDateField = "accountCreatedDate"
+        static let myDogSubcollection = "myDog"
     }
 }
