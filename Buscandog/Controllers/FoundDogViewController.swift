@@ -10,14 +10,18 @@ import FirebaseCore
 import FirebaseAuth
 import FirebaseFirestore
 import FirebaseStorage
+import CoreLocation
 
 class FoundDogViewController: UIViewController{
     
     var photoTaken: UIImage?
     var urlGlobal : String?
+    var longitudeGlobal = 0.0
+    var latitudeGlobal = 0.0
+    private var locationManager: CLLocationManager?
+    private var userLocation: CLLocation?
     
     let db = Firestore.firestore()
-    @IBOutlet weak var placeTextField: UITextField!
     @IBOutlet weak var breedTextField: UITextField!
     @IBOutlet weak var weightTextField: UITextField!
     @IBOutlet weak var heightTextField: UITextField!
@@ -32,6 +36,22 @@ class FoundDogViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        requestLocation()
+    }
+    
+    private func requestLocation(){
+        //Validamos GPS ACTIVO
+        guard CLLocationManager.locationServicesEnabled() else {
+            print("location service is not enabled")
+            return
+        }
+        
+        locationManager = CLLocationManager()
+        locationManager?.delegate = self
+        locationManager?.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager?.requestAlwaysAuthorization()
+        locationManager?.startUpdatingLocation()
+        
     }
     
     private func uploadPhotoToFirebase(){
@@ -100,10 +120,9 @@ class FoundDogViewController: UIViewController{
         openCamera()
     }
     
+    //MANDAR INFORMACIÓN DEL PERRO A LA BASE DE DATOS
     @IBAction func sendPressed(_ sender: UIButton) {
-        if let dogPlace = placeTextField.text,
-           placeTextField.text != "",
-           let dogBreed = breedTextField.text,
+        if let dogBreed = breedTextField.text,
            breedTextField.text != "",
            let dogWeight = weightTextField.text,
            weightTextField.text != "",
@@ -115,25 +134,29 @@ class FoundDogViewController: UIViewController{
            sexTextField.text != "",
            let dogDescription = descriptionTextField.text,
            descriptionTextField.text != "",
+           let dogImage = urlGlobal,
+           urlGlobal != "",
+           longitudeGlobal != 0.0,
+           latitudeGlobal != 0.0,
            let dogPostMaker = Auth.auth().currentUser?.email{
             db.collection(K.FStore.collectionName).addDocument(data:
-                [K.FStore.placeField: dogPlace,
-                 K.FStore.breedField: dogBreed,
+                [K.FStore.breedField: dogBreed,
                  K.FStore.weightField: dogWeight,
                  K.FStore.heightField: dogHeight,
                  K.FStore.colorField: dogColor,
                  K.FStore.sexField: dogSex,
+                 K.FStore.latitudeField: latitudeGlobal,
+                 K.FStore.longitudeField: longitudeGlobal,
                  K.FStore.descriptionField: dogDescription,
                  K.FStore.postMakerField: dogPostMaker,
                  K.FStore.dateField: Date().timeIntervalSince1970,
-                 K.FStore.urlField: urlGlobal!
+                 K.FStore.urlField: dogImage
                 ]) { (error) in
                 if let e = error {
                     print("There was an issue saving data to Firestore, \(e)")
                 } else{
                     print("Succesfully saved data")
                     DispatchQueue.main.async {
-                        self.placeTextField.text = ""
                         self.breedTextField.text = ""
                         self.weightTextField.text = ""
                         self.heightTextField.text = ""
@@ -162,6 +185,25 @@ extension FoundDogViewController: UIImagePickerControllerDelegate, UINavigationC
          //obtenemos la imagen tomada
             photoTaken = info[.originalImage] as? UIImage
             uploadPhotoToFirebase()
+        }
+    }
+}
+
+extension FoundDogViewController: CLLocationManagerDelegate{
+    //Obtenemos resultados de la geolocalización
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let bestLocation = locations.last else {
+            return
+        }
+        //Ya tenemos la ubicación del usuario! 🐶
+        userLocation = bestLocation
+        print(userLocation?.coordinate.latitude ?? 0.0)
+        print(userLocation?.coordinate.longitude ?? 0.0)
+        
+        //Guardar longitud y latitud en la base de datos (Primero en variables globales)
+        if let longitudeInFunction = userLocation?.coordinate.longitude, let latitudeInFunction = userLocation?.coordinate.latitude{
+            longitudeGlobal = longitudeInFunction
+            latitudeGlobal = latitudeInFunction
         }
     }
 }

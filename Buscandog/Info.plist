@@ -40,6 +40,11 @@
     <key>NSCameraUsageDescription</key>
     <string>Usaremos la cámara para publicar la foto de tu perro</string>
     
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>Usaremos tu ubicación para decir donde encontraste/perdiste el perro</string>
+    <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+    <string>Usaremos tu ubicación para decir donde encontraste/perdiste el perro</string>
+    
     
 </dict>
 </plist>

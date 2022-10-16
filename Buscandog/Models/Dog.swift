@@ -9,7 +9,6 @@ import Foundation
 import UIKit
 
 struct Dog{
-    let place : String
     let sex : String
     let breed : String
     let weight : String
@@ -17,4 +16,6 @@ struct Dog{
     let color : String
     let description : String
     let image : UIImage
+    let latitude: Double
+    let longitude: Double
 }

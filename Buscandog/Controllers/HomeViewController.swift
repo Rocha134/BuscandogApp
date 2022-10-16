@@ -33,6 +33,7 @@ class HomeViewController: UIViewController {
         
     }
     
+    //CARGAR LA INFORMACIÓN DE LA BASE DE DATOS
     func loadPosts(){
         dogs = []
         
@@ -47,15 +48,17 @@ class HomeViewController: UIViewController {
                     if let snapshotDocuments = querySnapshot?.documents{
                         for doc in snapshotDocuments{
                             let data = doc.data()
-                            let dogImage = procesarUrlAImagen(link: (data[K.FStore.urlField] as? String)!)
-                            if let dogPlace = data[K.FStore.placeField] as? String,
-                               let dogSex = data[K.FStore.sexField] as? String,
+                            //let dogImage = procesarUrlAImagen(link: (data[K.FStore.urlField] as? String))
+                            if let dogSex = data[K.FStore.sexField] as? String,
                                let dogBreed = data[K.FStore.breedField] as? String,
                                let dogWeight = data[K.FStore.weightField] as? String,
                                let dogHeight = data[K.FStore.heightField] as? String,
                                let dogColor = data[K.FStore.colorField] as? String,
+                               let dogImage = data[K.FStore.urlField] as? String,
+                               let dogLatitude = data[K.FStore.latitudeField] as? Double,
+                               let dogLongitude = data[K.FStore.longitudeField] as? Double,
                                let dogDescription = data[K.FStore.descriptionField] as? String {
-                                let newDog = Dog(place: dogPlace, sex: dogSex, breed: dogBreed, weight: dogWeight, height: dogHeight, color: dogColor, description: dogDescription, image: dogImage)
+                                let newDog = Dog(sex: dogSex, breed: dogBreed, weight: dogWeight, height: dogHeight, color: dogColor, description: dogDescription, image: procesarUrlAImagen(link: dogImage), latitude: dogLatitude, longitude: dogLongitude)
                                 self.dogs.append(newDog)
                                 DispatchQueue.main.async {
                                     self.tableView.reloadData()
@@ -90,7 +93,6 @@ class HomeViewController: UIViewController {
                 print(dogs[dogSelected!].weight)
                 print(dogs[dogSelected!].height)
                 print(dogs[dogSelected!].color)
-                print(dogs[dogSelected!].place)
                 
                 nextViewController.image = dogs[dogSelected!].image
                 nextViewController.sex = dogs[dogSelected!].sex
@@ -135,15 +137,17 @@ extension HomeViewController : UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: K.cellIdentifier, for: indexPath) as! PostTableViewCell
         
         // Configure the cell’s contents.
+    
         //cell.aboutNameLabel = dog.name
         //cell.ageLabel = dog.age
+        cell.nameLabel.isHidden = true
+        cell.aboutNameLabel.isHidden = true
         cell.breedLabel.text = dog.breed
         cell.colorLabel.text = dog.color
         cell.descriptionLabel.text = dog.description
         cell.heightLabel.text = dog.height
         cell.imagePost.image = dog.image
         //cell.nameLabel.text = dog.name
-        cell.placeLabel.text = dog.place
         //cell.postDateLabel.text = dog.date
         cell.weightLabel.text = dog.weight
         return cell

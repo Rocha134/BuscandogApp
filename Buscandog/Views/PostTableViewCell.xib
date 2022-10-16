@@ -91,7 +91,7 @@
                                                 <rect key="frame" x="0.0" y="146" width="814.5" height="115"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="gTb-qx-4bH">
-                                                        <rect key="frame" x="0.0" y="0.0" width="365.5" height="77.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="192.5" height="77.5"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="J4G-rj-CfK">
                                                                 <rect key="frame" x="0.0" y="0.0" width="137.5" height="20.5"/>
@@ -108,7 +108,7 @@
                                                                 </subviews>
                                                             </stackView>
                                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="xk1-Ow-cc7">
-                                                                <rect key="frame" x="0.0" y="28.5" width="365.5" height="49"/>
+                                                                <rect key="frame" x="0.0" y="28.5" width="192.5" height="49"/>
                                                                 <subviews>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="b3c-xh-NmB">
                                                                         <rect key="frame" x="0.0" y="0.0" width="53.5" height="49"/>
@@ -161,23 +161,6 @@
                                                                             </label>
                                                                         </subviews>
                                                                     </stackView>
-                                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="eU3-VQ-gyC">
-                                                                        <rect key="frame" x="210.5" y="0.0" width="155" height="49"/>
-                                                                        <subviews>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last seen" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k0m-8T-NqL">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="155" height="20.5"/>
-                                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                                <nil key="textColor"/>
-                                                                                <nil key="highlightedColor"/>
-                                                                            </label>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Av. Atlixcayotl, Pue" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xim-B8-YeG">
-                                                                                <rect key="frame" x="0.0" y="28.5" width="155" height="20.5"/>
-                                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                                                <nil key="textColor"/>
-                                                                                <nil key="highlightedColor"/>
-                                                                            </label>
-                                                                        </subviews>
-                                                                    </stackView>
                                                                 </subviews>
                                                             </stackView>
                                                         </subviews>
@@ -222,7 +205,6 @@
                 <outlet property="heightLabel" destination="KJn-b2-IqV" id="WlR-dg-Yma"/>
                 <outlet property="imagePost" destination="PPP-c0-0qh" id="qi9-It-Rjv"/>
                 <outlet property="nameLabel" destination="mzi-fx-Npp" id="lMP-Ga-sv6"/>
-                <outlet property="placeLabel" destination="xim-B8-YeG" id="2hT-36-CPP"/>
                 <outlet property="postDateLabel" destination="L1V-9j-NNh" id="RR9-1x-Cgx"/>
                 <outlet property="view1" destination="iya-FE-aYJ" id="qbh-W8-V2E"/>
                 <outlet property="weightLabel" destination="H9H-fy-WIw" id="2U2-Pi-GBj"/>

@@ -15,7 +15,6 @@ struct K {
     
     struct FStore {
         static let collectionName = "dogs"
-        static let placeField = "place"
         static let dateField = "date"
         static let sexField = "sex"
         static let breedField = "breed"
@@ -25,5 +24,7 @@ struct K {
         static let descriptionField = "description"
         static let postMakerField = "postMaker"
         static let urlField = "url"
+        static let latitudeField = "latitude"
+        static let longitudeField = "longitude"
     }
 }
