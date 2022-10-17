@@ -142,8 +142,9 @@ class FoundDogViewController: UIViewController{
            longitudeGlobal != 0.0,
            latitudeGlobal != 0.0,
            let dogPostMaker = Auth.auth().currentUser?.email{
-            let uniqueIdentifier = dogPostMaker as String + String(Date().timeIntervalSince1970)
-            db.collection(K.FStore.collectionName).document(uniqueIdentifier).setData(
+            let dogDate = Date().timeIntervalSince1970
+            let uniqueIdentifier = dogPostMaker as String + String(dogDate)
+            db.collection(K.FStore.collectionFoundName).document(uniqueIdentifier).setData(
                 [K.FStore.breedField: dogBreed,
                  K.FStore.weightField: dogWeight,
                  K.FStore.heightField: dogHeight,
@@ -153,7 +154,7 @@ class FoundDogViewController: UIViewController{
                  K.FStore.longitudeField: longitudeGlobal,
                  K.FStore.descriptionField: dogDescription,
                  K.FStore.postMakerField: dogPostMaker,
-                 K.FStore.dateField: Date().timeIntervalSince1970,
+                 K.FStore.dateField: dogDate,
                  K.FStore.urlField: dogImage
                 ])
             //Accedemos al usuario para añadir el identifier a los perros que encontró

@@ -224,8 +224,7 @@
                                     <fontDescription key="titleFontDescription" type="boldSystem" pointSize="35"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="reportAction:" destination="ykK-yi-tw5" eventType="touchUpInside" id="ONa-Zu-nOl"/>
-                                    <action selector="sendPressed:" destination="gwJ-0n-z2e" eventType="touchUpInside" id="SfF-yG-0m2"/>
+                                    <action selector="reportAction:" destination="ykK-yi-tw5" eventType="touchUpInside" id="9EI-h5-gPl"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="KQX-7d-JXD">

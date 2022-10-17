@@ -124,7 +124,8 @@ class RegisterLostDogViewController: UIViewController{
            let dogImage = urlGlobal,
            urlGlobal != "",
            let dogPostMaker = Auth.auth().currentUser?.email{
-            db.collection(K.FStore.collectionNameUsers).document(dogPostMaker).collection(K.FStore.myDogSubcollection).document(dogName + dogPostMaker as String + String(Date().timeIntervalSince1970)).setData(
+            let dogDate = Date().timeIntervalSince1970
+            db.collection(K.FStore.collectionNameUsers).document(dogPostMaker).collection(K.FStore.myDogSubcollection).document(dogName + dogPostMaker as String + String(dogDate)).setData(
                 [K.FStore.dogNameField: dogName,
                  K.FStore.breedField: dogBreed,
                  K.FStore.weightField: dogWeight,
@@ -133,7 +134,7 @@ class RegisterLostDogViewController: UIViewController{
                  K.FStore.sexField: sexGlobal,
                  K.FStore.descriptionField: dogDescription,
                  K.FStore.postMakerField: dogPostMaker,
-                 K.FStore.dateField: Date().timeIntervalSince1970,
+                 K.FStore.dateField: dogDate,
                  K.FStore.urlField: dogImage
                 ]) { (error) in
                 if let e = error {

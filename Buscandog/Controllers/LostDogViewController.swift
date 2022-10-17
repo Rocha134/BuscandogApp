@@ -14,7 +14,7 @@ class LostDogViewController: UIViewController, UIPickerViewDataSource, UIPickerV
     
     
     
-    //var dogSelected: Int?
+    var dogSelected : Int = 0
     
     let db = Firestore.firestore()
     
@@ -36,11 +36,18 @@ class LostDogViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         return(dogs[row].name)
     }
     
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        dogSelected = row
+    }
+    
     //Después de que aparece
     override func viewDidAppear(_ animated: Bool) {
         myDogsPickerView.dataSource = self
         myDogsPickerView.delegate = self
         print(dogs.count)
+        dogSelected = 0
+        print(dogs[dogSelected].name)
+        print("Este es mi perro en la posición 0 del Array:  \(dogs[0].name)")
     }
     
     //En cuanto aparece
@@ -71,10 +78,14 @@ class LostDogViewController: UIViewController, UIPickerViewDataSource, UIPickerV
                                    let dogHeight = data[K.FStore.heightField] as? String,
                                    let dogColor = data[K.FStore.colorField] as? String,
                                    let dogImage = data[K.FStore.urlField] as? String,
+                                   let dogPostMaker = data[K.FStore.postMakerField] as? String,
+                                   let dogDate = data[K.FStore.dateField] as? Double,
+                                   let dogURL = data[K.FStore.urlField] as? String,
                                    //let dogLatitude = data[K.FStore.latitudeField] as? Double,
                                    //let dogLongitude = data[K.FStore.longitudeField] as? Double,
                                    let dogDescription = data[K.FStore.descriptionField] as? String {
-                                    let newDog = DogLost(name: dogName, sex: dogSex, breed: dogBreed, weight: dogWeight, height: dogHeight, color: dogColor, description: dogDescription, image: procesarUrlAImagen(link: dogImage), latitude: 1.1, longitude: 1.1)
+                                    let dogUniqueIdentifier = dogName + dogPostMaker + String(dogDate)
+                                    let newDog = DogLost(name: dogName, sex: dogSex, breed: dogBreed, weight: dogWeight, height: dogHeight, color: dogColor, description: dogDescription, url: dogURL, image: procesarUrlAImagen(link: dogImage), latitude: 1.1, longitude: 1.1, date: dogDate, uniqueIdentifier: dogUniqueIdentifier, dogPostMaker: dogPostMaker)
                                     //Ya tenemos el arreglo con los perros
                                     dogs.append(newDog)
                                     //print(self.dogs[self.dogs.count-1].name)
@@ -94,10 +105,44 @@ class LostDogViewController: UIViewController, UIPickerViewDataSource, UIPickerV
     
     
     
-    @IBAction func reportAction(_ sender: Any) {
-        
-        //pickerData[picker.selectedRow(inComponent: 0)]
-        
+    @IBAction func reportAction(_ sender: UIButton) {
+        let dogName = dogs[dogSelected].name
+           let dogBreed = dogs[dogSelected].breed
+           let dogWeight = dogs[dogSelected].weight
+           let dogHeight = dogs[dogSelected].height
+           let dogColor = dogs[dogSelected].color
+           let dogDescription = dogs[dogSelected].description
+           let dogSex = dogs[dogSelected].sex
+        let dogURL = dogs[dogSelected].url
+        let dogPostMaker = dogs[dogSelected].dogPostMaker
+        let dogDate = dogs[dogSelected].date
+        let dogUniqueIdentifier = dogName + dogPostMaker + String(dogDate)
+            db.collection(K.FStore.collectionLostName).document(dogUniqueIdentifier).setData(
+                [K.FStore.breedField: dogBreed,
+                 K.FStore.weightField: dogWeight,
+                 K.FStore.heightField: dogHeight,
+                 K.FStore.colorField: dogColor,
+                 K.FStore.sexField: dogSex,
+                 //K.FStore.latitudeField: latitudeGlobal,
+                // K.FStore.longitudeField: longitudeGlobal,
+                 K.FStore.descriptionField: dogDescription,
+                 K.FStore.postMakerField: dogPostMaker,
+                 K.FStore.dateField: Date().timeIntervalSince1970,
+                 K.FStore.urlField: dogURL
+                ])
+            //Accedemos al usuario para añadir el identifier a los perros que encontró
+            db.collection(K.FStore.collectionNameUsers).document(dogPostMaker).collection(K.FStore.myLostSubcollection).document(dogUniqueIdentifier).setData([K.FStore.uniqueDogIdentifierField:dogUniqueIdentifier])
+            { (error) in
+                if let e = error {
+                    print("There was an issue saving data to Firestore, \(e)")
+                } else{
+                    print("Succesfully saved data")
+                    DispatchQueue.main.async {
+                        //implementar en un rato
+                        //self.performSegue(withIdentifier: K.reportHomeSegue, sender: self)
+                    }
+                }
+            }
     }
     
     

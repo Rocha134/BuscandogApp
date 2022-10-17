@@ -18,4 +18,7 @@ struct DogFound{
     let image : UIImage
     let latitude : Double
     let longitude : Double
+    let date : Double
+    let uniqueIdentifier : String
+    let dogPostMaker : String
 }

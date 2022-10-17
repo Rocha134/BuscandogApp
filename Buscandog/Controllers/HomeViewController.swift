@@ -28,7 +28,7 @@ class HomeViewController: UIViewController {
         navigationItem.hidesBackButton = true
         tableView.register(UINib.init(nibName: K.cellNibName, bundle: nil), forCellReuseIdentifier: K.cellIdentifier)
         
-        let dogAntiError = DogFound(sex: "Macho", breed: "Raza", weight: "Peso", height: "Altura", color: "Color", description: "Descripcion", image: UIImage(named: "logoWhite")!, latitude: 1.0, longitude: 1.0)
+        let dogAntiError = DogFound(sex: "Macho", breed: "Raza", weight: "Peso", height: "Altura", color: "Color", description: "Descripcion", image: UIImage(named: "logoWhite")!, latitude: 1.0, longitude: 1.0, date: 0.0, uniqueIdentifier: "Salu2", dogPostMaker: "ElCreador")
         
         dogs.append(dogAntiError)
         
@@ -43,7 +43,7 @@ class HomeViewController: UIViewController {
         
         dogs = []
         
-        db.collection(K.FStore.collectionName).order(by: K.FStore.dateField, descending: true)
+        db.collection(K.FStore.collectionFoundName).order(by: K.FStore.dateField, descending: true)
             .addSnapshotListener/*getDocument*/{ (querySnapshot, error) in
                 
                 self.dogs = []
@@ -63,8 +63,11 @@ class HomeViewController: UIViewController {
                                let dogImage = data[K.FStore.urlField] as? String,
                                let dogLatitude = data[K.FStore.latitudeField] as? Double,
                                let dogLongitude = data[K.FStore.longitudeField] as? Double,
-                               let dogDescription = data[K.FStore.descriptionField] as? String {
-                                let newDog = DogFound(sex: dogSex, breed: dogBreed, weight: dogWeight, height: dogHeight, color: dogColor, description: dogDescription, image: procesarUrlAImagen(link: dogImage), latitude: dogLatitude, longitude: dogLongitude)
+                               let dogDate = data[K.FStore.dateField] as? Double,
+                               let dogDescription = data[K.FStore.descriptionField] as? String,
+                               let dogPostMaker = data[K.FStore.postMakerField] as? String {
+                                let dogUniqueIdentifier = dogPostMaker + String(dogDate)
+                                let newDog = DogFound(sex: dogSex, breed: dogBreed, weight: dogWeight, height: dogHeight, color: dogColor, description: dogDescription, image: procesarUrlAImagen(link: dogImage), latitude: dogLatitude, longitude: dogLongitude, date: dogDate, uniqueIdentifier: dogUniqueIdentifier, dogPostMaker: dogPostMaker)
                                 self.dogs.append(newDog)
                                 DispatchQueue.main.async {
                                     self.tableView.reloadData()
