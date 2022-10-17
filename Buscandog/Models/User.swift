@@ -13,7 +13,7 @@ struct User {
     let cellphoneNumber: String
     let email: String
     let accountCreatedDate : Double
-    let myDogs : [DogFound]
+    let myDogs : [DogLost]
     let myLostDogs : [String]
     let myFoundDogs : [String]
 }

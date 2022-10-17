@@ -157,7 +157,7 @@ class FoundDogViewController: UIViewController{
                  K.FStore.urlField: dogImage
                 ])
             //Accedemos al usuario para añadir el identifier a los perros que encontró
-            db.collection(K.FStore.collectionNameUsers).document(dogPostMaker).collection(K.FStore.myLostSubcollection).document(uniqueIdentifier).setData([K.FStore.uniqueDogIdentifierField:uniqueIdentifier])
+            db.collection(K.FStore.collectionNameUsers).document(dogPostMaker).collection(K.FStore.myFoundSubcollection).document(uniqueIdentifier).setData([K.FStore.uniqueDogIdentifierField:uniqueIdentifier])
             { (error) in
                 if let e = error {
                     print("There was an issue saving data to Firestore, \(e)")

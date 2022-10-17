@@ -1,14 +1,15 @@
 //
-//  Dog.swift
+//  DogLost.swift
 //  Buscandog
 //
-//  Created by Francisco Rocha Juárez on 13/10/22.
+//  Created by Francisco Rocha Juárez on 16/10/22.
 //
 
 import Foundation
 import UIKit
 
-struct DogFound{
+struct DogLost{
+    let name : String
     let sex : String
     let breed : String
     let weight : String

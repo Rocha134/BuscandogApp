@@ -20,7 +20,7 @@ class LostDogViewController: UIViewController, UIPickerViewDataSource, UIPickerV
     
     //Tenemos que llenar el arreglo de los perros del usuario
     
-    var dogs : [DogFound] = []
+    var dogs : [DogLost] = []
     
     @IBOutlet weak var myDogsPickerView: UIPickerView!
     
@@ -31,9 +31,13 @@ class LostDogViewController: UIViewController, UIPickerViewDataSource, UIPickerV
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return dogs.count
     }
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return(dogs[row].name)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadPosts()
         myDogsPickerView.dataSource = self
         myDogsPickerView.delegate = self
     }
@@ -44,8 +48,8 @@ class LostDogViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         
         dogs = []
         if let currentUser = Auth.auth().currentUser?.email{
-            db.collection(K.FStore.collectionNameUsers).document(currentUser as String).collection(K.FStore.collectionName).order(by: K.FStore.dateField, descending: true)
-                .addSnapshotListener/*getDocument*/{ (querySnapshot, error) in
+            db.collection(K.FStore.collectionNameUsers).document(currentUser as String).collection(K.FStore.myDogSubcollection).order(by: K.FStore.dateField, descending: true)
+                .addSnapshotListener/*getDocument*/{ [self] (querySnapshot, error) in
                     
                     self.dogs = []
                     
@@ -63,16 +67,18 @@ class LostDogViewController: UIViewController, UIPickerViewDataSource, UIPickerV
                                    let dogHeight = data[K.FStore.heightField] as? String,
                                    let dogColor = data[K.FStore.colorField] as? String,
                                    let dogImage = data[K.FStore.urlField] as? String,
-                                   let dogLatitude = data[K.FStore.latitudeField] as? Double,
-                                   let dogLongitude = data[K.FStore.longitudeField] as? Double,
+                                   //let dogLatitude = data[K.FStore.latitudeField] as? Double,
+                                   //let dogLongitude = data[K.FStore.longitudeField] as? Double,
                                    let dogDescription = data[K.FStore.descriptionField] as? String {
-                                    let newDog = DogFound(sex: dogSex, breed: dogBreed, weight: dogWeight, height: dogHeight, color: dogColor, description: dogDescription, image: procesarUrlAImagen(link: dogImage), latitude: dogLatitude, longitude: dogLongitude)
+                                    let newDog = DogLost(name: dogName, sex: dogSex, breed: dogBreed, weight: dogWeight, height: dogHeight, color: dogColor, description: dogDescription, image: procesarUrlAImagen(link: dogImage), latitude: 1.1, longitude: 1.1)
+                                    //Ya tenemos el arreglo con los perros
                                     self.dogs.append(newDog)
-                                    DispatchQueue.main.async {
+                                    print(self.dogs[self.dogs.count-1].name)
+                                    //DispatchQueue.main.async {
                                         //self.tableView.reloadData()
                                         //let indexPath = IndexPath(row: self.dogs.count-1, section: 0)
                                         //self.tableView.scrollToRow(at: indexPath, at: .top, animated: false)
-                                    }
+                                    //}
                                 }
                             }
                         }
