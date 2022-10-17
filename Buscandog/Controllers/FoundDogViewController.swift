@@ -142,7 +142,7 @@ class FoundDogViewController: UIViewController{
            longitudeGlobal != 0.0,
            latitudeGlobal != 0.0,
            let dogPostMaker = Auth.auth().currentUser?.email{
-            db.collection(K.FStore.collectionName).addDocument(data:
+            db.collection(K.FStore.collectionName).document(dogPostMaker as String + String(Date().timeIntervalSince1970)).setData(
                 [K.FStore.breedField: dogBreed,
                  K.FStore.weightField: dogWeight,
                  K.FStore.heightField: dogHeight,

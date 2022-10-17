@@ -107,7 +107,6 @@ class LostDogViewController: UIViewController{
         openCamera()
     }
     
-    
     //MANDAR INFORMACIÓN DEL PERRO A LA BASE DE DATOS
     @IBAction func registerMyDogAction(_ sender: UIButton) {
         if let dogName = nameTextField.text,
@@ -125,7 +124,7 @@ class LostDogViewController: UIViewController{
            let dogImage = urlGlobal,
            urlGlobal != "",
            let dogPostMaker = Auth.auth().currentUser?.email{
-            db.collection(K.FStore.collectionNameUsers).document(dogPostMaker).collection(K.FStore.collectionName).addDocument(data:
+            db.collection(K.FStore.collectionNameUsers).document(dogPostMaker).collection(K.FStore.collectionName).document(dogName + dogPostMaker as String + String(Date().timeIntervalSince1970)).setData(
                 [K.FStore.dogNameField: dogName,
                  K.FStore.breedField: dogBreed,
                  K.FStore.weightField: dogWeight,
