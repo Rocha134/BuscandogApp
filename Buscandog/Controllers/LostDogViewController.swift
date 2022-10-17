@@ -46,8 +46,6 @@ class LostDogViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         myDogsPickerView.delegate = self
         print(dogs.count)
         dogSelected = 0
-        print(dogs[dogSelected].name)
-        print("Este es mi perro en la posición 0 del Array:  \(dogs[0].name)")
     }
     
     //En cuanto aparece

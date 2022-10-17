@@ -14,6 +14,7 @@ struct K {
     static let postDetailSegue = "postDetailSegue"
     static let reportHomeSegue = "reportToHomeSegue"
     static let myDogRegisterToHome = "myDogRegisterToHomeSegue"
+    static let keepSignIn = "KeepSignInSegue"
     
     struct FStore {
         static let collectionFoundName = "dogsFound"

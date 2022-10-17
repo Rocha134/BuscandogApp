@@ -23,6 +23,8 @@ class HomeViewController: UIViewController {
     var dogsFound : [DogFound] = []
     var dogsLost : [DogLost] = []
     
+    let defaults = UserDefaults.standard
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
@@ -116,6 +118,7 @@ class HomeViewController: UIViewController {
         
         do {
             try Auth.auth().signOut()
+            self.defaults.set(false, forKey: "KeepSignIn")
             navigationController?.popToRootViewController(animated: true)
         } catch let signOutError as NSError {
             print("Error signing out: %@", signOutError)

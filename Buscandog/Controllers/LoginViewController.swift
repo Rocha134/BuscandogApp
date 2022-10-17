@@ -14,6 +14,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var emailTextfield: UITextField!
     @IBOutlet weak var passwordTextfield: UITextField!
     
+    let defaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +30,9 @@ class LoginViewController: UIViewController {
                 if let e = error {
                     print(e)
                 } else {
+                    //Mantenemos la sesion iniciada
+                    self.defaults.set(true, forKey: "KeepSignIn")
+                    
                     self.performSegue(withIdentifier: K.loginSegue, sender: self)
                 }
             }

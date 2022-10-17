@@ -21,6 +21,7 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var emailTextfield: UITextField!
     @IBOutlet weak var passwordTextfield: UITextField!
     
+    let defaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +50,8 @@ class RegisterViewController: UIViewController {
                             K.FStore.lastNameField: lastName,
                             K.FStore.accountCreatedDateField: Date().timeIntervalSince1970
                     ])
+                    //Mantenemos la sesion iniciada
+                    self.defaults.set(true, forKey: "KeepSignIn")
                     //Navigate to the Home ViewController
                     self.performSegue(withIdentifier: K.registerSegue, sender: self)
                 }
