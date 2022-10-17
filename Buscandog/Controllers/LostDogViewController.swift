@@ -21,6 +21,7 @@ class LostDogViewController: UIViewController, UIPickerViewDataSource, UIPickerV
     //Tenemos que llenar el arreglo de los perros del usuario
     
     var dogs : [DogLost] = []
+    //var pickerData : [DogLost] = []
     
     @IBOutlet weak var myDogsPickerView: UIPickerView!
     
@@ -35,23 +36,26 @@ class LostDogViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         return(dogs[row].name)
     }
     
+    //Después de que aparece
+    override func viewDidAppear(_ animated: Bool) {
+        myDogsPickerView.dataSource = self
+        myDogsPickerView.delegate = self
+        print(dogs.count)
+    }
+    
+    //En cuanto aparece
     override func viewDidLoad() {
         super.viewDidLoad()
         loadPosts()
-        myDogsPickerView.dataSource = self
-        myDogsPickerView.delegate = self
     }
     
     
     //En esta parte obtenemos la información de la base de datos y llenamos el arreglo nombrado pickerData con Dogs
     func loadPosts(){
         
-        dogs = []
         if let currentUser = Auth.auth().currentUser?.email{
             db.collection(K.FStore.collectionNameUsers).document(currentUser as String).collection(K.FStore.myDogSubcollection).order(by: K.FStore.dateField, descending: true)
-                .addSnapshotListener/*getDocument*/{ [self] (querySnapshot, error) in
-                    
-                    self.dogs = []
+                .getDocuments{ [self] (querySnapshot, error) in
                     
                     if let e = error{
                         print("There was an issue retrieving data from Firestore. \(e)")
@@ -72,8 +76,8 @@ class LostDogViewController: UIViewController, UIPickerViewDataSource, UIPickerV
                                    let dogDescription = data[K.FStore.descriptionField] as? String {
                                     let newDog = DogLost(name: dogName, sex: dogSex, breed: dogBreed, weight: dogWeight, height: dogHeight, color: dogColor, description: dogDescription, image: procesarUrlAImagen(link: dogImage), latitude: 1.1, longitude: 1.1)
                                     //Ya tenemos el arreglo con los perros
-                                    self.dogs.append(newDog)
-                                    print(self.dogs[self.dogs.count-1].name)
+                                    dogs.append(newDog)
+                                    //print(self.dogs[self.dogs.count-1].name)
                                     //DispatchQueue.main.async {
                                         //self.tableView.reloadData()
                                         //let indexPath = IndexPath(row: self.dogs.count-1, section: 0)
@@ -81,6 +85,7 @@ class LostDogViewController: UIViewController, UIPickerViewDataSource, UIPickerV
                                     //}
                                 }
                             }
+                            //print(dogs.count)
                         }
                     }
                 }
