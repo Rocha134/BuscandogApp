@@ -13,9 +13,11 @@ struct K {
     static let loginSegue = "LoginToHome"
     static let postDetailSegue = "postDetailSegue"
     static let reportHomeSegue = "reportToHomeSegue"
+    static let myDogRegisterToHome = "myDogRegisterToHomeSegue"
     
     struct FStore {
         static let collectionName = "dogs"
+        static let dogNameField = "dogName"
         static let dateField = "date"
         static let sexField = "sex"
         static let breedField = "breed"
