@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-struct Dog{
+struct DogFound{
     let sex : String
     let breed : String
     let weight : String

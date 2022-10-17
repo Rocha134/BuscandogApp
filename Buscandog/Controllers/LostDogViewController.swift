@@ -6,170 +6,98 @@
 //
 
 import UIKit
-import UIKit
 import FirebaseCore
 import FirebaseAuth
 import FirebaseFirestore
-import FirebaseStorage
 
-
-class LostDogViewController: UIViewController{
+class LostDogViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
-    var photoTaken: UIImage?
-    var urlGlobal : String?
-    var sexGlobal = "Macho"
+    
+    
+    //var dogSelected: Int?
     
     let db = Firestore.firestore()
-    @IBOutlet weak var nameTextField: UITextField!
-    @IBOutlet weak var breedTextField: UITextField!
-    @IBOutlet weak var weightTextField: UITextField!
-    @IBOutlet weak var heightTextField: UITextField!
-    @IBOutlet weak var colorTextField: UITextField!
-    @IBOutlet weak var sexSelector: UISegmentedControl!
-    @IBOutlet weak var descriptionTextField: UITextField!
     
-    @IBAction func changeSexAction(_ sender: UISegmentedControl) {
-        let index = sexSelector.selectedSegmentIndex
-        sexGlobal = sexSelector.titleForSegment(at: index) ?? "Macho"
+    //Tenemos que llenar el arreglo de los perros del usuario
+    
+    var dogs : [DogFound] = []
+    
+    @IBOutlet weak var myDogsPickerView: UIPickerView!
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
     }
-    //MARK: -Properties
     
-    private var imagePicker: UIImagePickerController?
-    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return dogs.count
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        myDogsPickerView.dataSource = self
+        myDogsPickerView.delegate = self
     }
     
-    private func uploadPhotoToFirebase(){
-        //1. Asegurar que la foto exista
-        guard let imageSaved = photoTaken,
-              let imageSavedData: Data = imageSaved.jpegData(compressionQuality: 0.1) else{
-                  
-                  return
-              }
+    
+    //En esta parte obtenemos la información de la base de datos y llenamos el arreglo nombrado pickerData con Dogs
+    func loadPosts(){
         
-        //CONFIGURACION PARA GUARDAR LA FOTO EN FIREBASE
-        let metaDataConfig = StorageMetadata()
-        metaDataConfig.contentType = "image/jpg"
-        
-        //Crear una referencia al storage de firebase
-        let storage = Storage.storage()
-        
-        
-        //Crear nombre de la imagen a subir
-        if let usuarioActual = Auth.auth().currentUser?.email{
-            let imageName = usuarioActual as String + String(Date().timeIntervalSince1970)
-            //Referencia a la carpeta donde se va a guardar la foto
-            let folderReference = storage.reference(withPath: "fotosDeMisPerros/\(imageName).jpg")
-            //Subir la foto a Firebase
-            DispatchQueue.global(qos: .background).async {
-                folderReference.putData(imageSavedData, metadata: metaDataConfig) { (metaData: StorageMetadata?, error: Error?) in
-                    DispatchQueue.main.async {
-                        //Detener la carga
-                        if let error = error{
-                            print(error.localizedDescription)
-                            return
-                        }
-                        //obtener la URL de descarga
-                        folderReference.downloadURL { (url: URL?, error: Error?) in
-                            print(url?.absoluteString ?? "")
-                            self.urlGlobal = url?.absoluteString
+        dogs = []
+        if let currentUser = Auth.auth().currentUser?.email{
+            db.collection(K.FStore.collectionNameUsers).document(currentUser as String).collection(K.FStore.collectionName).order(by: K.FStore.dateField, descending: true)
+                .addSnapshotListener/*getDocument*/{ (querySnapshot, error) in
+                    
+                    self.dogs = []
+                    
+                    if let e = error{
+                        print("There was an issue retrieving data from Firestore. \(e)")
+                    } else{
+                        if let snapshotDocuments = querySnapshot?.documents{
+                            for doc in snapshotDocuments{
+                                let data = doc.data()
+                                //let dogImage = procesarUrlAImagen(link: (data[K.FStore.urlField] as? String))
+                                if let dogSex = data[K.FStore.sexField] as? String,
+                                   let dogName = data[K.FStore.dogNameField] as? String,
+                                   let dogBreed = data[K.FStore.breedField] as? String,
+                                   let dogWeight = data[K.FStore.weightField] as? String,
+                                   let dogHeight = data[K.FStore.heightField] as? String,
+                                   let dogColor = data[K.FStore.colorField] as? String,
+                                   let dogImage = data[K.FStore.urlField] as? String,
+                                   let dogLatitude = data[K.FStore.latitudeField] as? Double,
+                                   let dogLongitude = data[K.FStore.longitudeField] as? Double,
+                                   let dogDescription = data[K.FStore.descriptionField] as? String {
+                                    let newDog = DogFound(sex: dogSex, breed: dogBreed, weight: dogWeight, height: dogHeight, color: dogColor, description: dogDescription, image: procesarUrlAImagen(link: dogImage), latitude: dogLatitude, longitude: dogLongitude)
+                                    self.dogs.append(newDog)
+                                    DispatchQueue.main.async {
+                                        //self.tableView.reloadData()
+                                        //let indexPath = IndexPath(row: self.dogs.count-1, section: 0)
+                                        //self.tableView.scrollToRow(at: indexPath, at: .top, animated: false)
+                                    }
+                                }
+                            }
                         }
                     }
                 }
-            }
-        }
-        
-      
-        
-        
-    }
-    
-    private func openCamera(){
-        imagePicker = UIImagePickerController()
-        imagePicker?.sourceType = .camera
-        imagePicker?.cameraFlashMode = .off
-        imagePicker?.cameraCaptureMode = .photo
-        imagePicker?.allowsEditing = true
-        imagePicker?.delegate = self
-        
-        guard let imagePicker = imagePicker else {
-            return
-        }
-        
-        present(imagePicker, animated: true, completion: nil)
-
-    }
-    
-    
-    @IBAction func photoButton(_ sender: UIButton) {
-        openCamera()
-    }
-    
-    //MANDAR INFORMACIÓN DEL PERRO A LA BASE DE DATOS
-    @IBAction func registerMyDogAction(_ sender: UIButton) {
-        if let dogName = nameTextField.text,
-           nameTextField.text != "",
-            let dogBreed = breedTextField.text,
-           breedTextField.text != "",
-           let dogWeight = weightTextField.text,
-           weightTextField.text != "",
-           let dogHeight = heightTextField.text,
-           heightTextField.text != "",
-           let dogColor = colorTextField.text,
-           colorTextField.text != "",
-           let dogDescription = descriptionTextField.text,
-           descriptionTextField.text != "",
-           let dogImage = urlGlobal,
-           urlGlobal != "",
-           let dogPostMaker = Auth.auth().currentUser?.email{
-            db.collection(K.FStore.collectionNameUsers).document(dogPostMaker).collection(K.FStore.collectionName).document(dogName + dogPostMaker as String + String(Date().timeIntervalSince1970)).setData(
-                [K.FStore.dogNameField: dogName,
-                 K.FStore.breedField: dogBreed,
-                 K.FStore.weightField: dogWeight,
-                 K.FStore.heightField: dogHeight,
-                 K.FStore.colorField: dogColor,
-                 K.FStore.sexField: sexGlobal,
-                 K.FStore.descriptionField: dogDescription,
-                 K.FStore.postMakerField: dogPostMaker,
-                 K.FStore.dateField: Date().timeIntervalSince1970,
-                 K.FStore.urlField: dogImage
-                ]) { (error) in
-                if let e = error {
-                    print("There was an issue saving data to Firestore, \(e)")
-                } else{
-                    print("Succesfully saved data")
-                    DispatchQueue.main.async {
-                        self.breedTextField.text = ""
-                        self.weightTextField.text = ""
-                        self.heightTextField.text = ""
-                        self.colorTextField.text = ""
-                        //self.sexTextField.text = ""
-                        self.descriptionTextField.text = ""
-                        self.performSegue(withIdentifier: K.myDogRegisterToHome, sender: self)
-                    }
-                }
-            }
         }
     }
     
-}
-
-//MARK: -UIImagePickerControllerDelegate
-extension LostDogViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     
-    //cuando se toma o no se toma la foto
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    
+    @IBAction func reportAction(_ sender: Any) {
         
-        //cerrar la cámara
-        imagePicker?.dismiss(animated: true, completion: nil)
+        //pickerData[picker.selectedRow(inComponent: 0)]
         
-        if info.keys.contains(.originalImage){
-            //previewImageView.isHidden = false
-         //obtenemos la imagen tomada
-            photoTaken = info[.originalImage] as? UIImage
-            uploadPhotoToFirebase()
-        }
     }
+    
+    
+    /*
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

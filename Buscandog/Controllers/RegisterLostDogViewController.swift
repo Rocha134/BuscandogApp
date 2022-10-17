@@ -1,28 +1,26 @@
 //
-//  FoundDogViewController.swift
+//  LostDogViewController.swift
 //  Buscandog
 //
-//  Created by Francisco Rocha Juárez on 13/10/22.
+//  Created by Francisco Rocha Juárez on 16/10/22.
 //
 
+import UIKit
 import UIKit
 import FirebaseCore
 import FirebaseAuth
 import FirebaseFirestore
 import FirebaseStorage
-import CoreLocation
 
-class FoundDogViewController: UIViewController{
+
+class RegisterLostDogViewController: UIViewController{
     
     var photoTaken: UIImage?
     var urlGlobal : String?
-    var longitudeGlobal = 0.0
-    var latitudeGlobal = 0.0
     var sexGlobal = "Macho"
-    private var locationManager: CLLocationManager?
-    private var userLocation: CLLocation?
     
     let db = Firestore.firestore()
+    @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var breedTextField: UITextField!
     @IBOutlet weak var weightTextField: UITextField!
     @IBOutlet weak var heightTextField: UITextField!
@@ -41,31 +39,15 @@ class FoundDogViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        requestLocation()
-    }
-    
-    private func requestLocation(){
-        //Validamos GPS ACTIVO
-        guard CLLocationManager.locationServicesEnabled() else {
-            print("location service is not enabled")
-            return
-        }
-        
-        locationManager = CLLocationManager()
-        locationManager?.delegate = self
-        locationManager?.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager?.requestAlwaysAuthorization()
-        locationManager?.startUpdatingLocation()
-        
     }
     
     private func uploadPhotoToFirebase(){
         //1. Asegurar que la foto exista
         guard let imageSaved = photoTaken,
               let imageSavedData: Data = imageSaved.jpegData(compressionQuality: 0.1) else{
-            
-            return
-        }
+                  
+                  return
+              }
         
         //CONFIGURACION PARA GUARDAR LA FOTO EN FIREBASE
         let metaDataConfig = StorageMetadata()
@@ -79,7 +61,7 @@ class FoundDogViewController: UIViewController{
         if let usuarioActual = Auth.auth().currentUser?.email{
             let imageName = usuarioActual as String + String(Date().timeIntervalSince1970)
             //Referencia a la carpeta donde se va a guardar la foto
-            let folderReference = storage.reference(withPath: "fotosDePerros/\(imageName).jpg")
+            let folderReference = storage.reference(withPath: "fotosDeMisPerros/\(imageName).jpg")
             //Subir la foto a Firebase
             DispatchQueue.global(qos: .background).async {
                 folderReference.putData(imageSavedData, metadata: metaDataConfig) { (metaData: StorageMetadata?, error: Error?) in
@@ -99,7 +81,7 @@ class FoundDogViewController: UIViewController{
             }
         }
         
-        
+      
         
         
     }
@@ -117,7 +99,7 @@ class FoundDogViewController: UIViewController{
         }
         
         present(imagePicker, animated: true, completion: nil)
-        
+
     }
     
     
@@ -126,8 +108,10 @@ class FoundDogViewController: UIViewController{
     }
     
     //MANDAR INFORMACIÓN DEL PERRO A LA BASE DE DATOS
-    @IBAction func sendPressed(_ sender: UIButton) {
-        if let dogBreed = breedTextField.text,
+    @IBAction func registerMyDogAction(_ sender: UIButton) {
+        if let dogName = nameTextField.text,
+           nameTextField.text != "",
+            let dogBreed = breedTextField.text,
            breedTextField.text != "",
            let dogWeight = weightTextField.text,
            weightTextField.text != "",
@@ -139,26 +123,19 @@ class FoundDogViewController: UIViewController{
            descriptionTextField.text != "",
            let dogImage = urlGlobal,
            urlGlobal != "",
-           longitudeGlobal != 0.0,
-           latitudeGlobal != 0.0,
            let dogPostMaker = Auth.auth().currentUser?.email{
-            let uniqueIdentifier = dogPostMaker as String + String(Date().timeIntervalSince1970)
-            db.collection(K.FStore.collectionName).document(uniqueIdentifier).setData(
-                [K.FStore.breedField: dogBreed,
+            db.collection(K.FStore.collectionNameUsers).document(dogPostMaker).collection(K.FStore.myDogSubcollection).document(dogName + dogPostMaker as String + String(Date().timeIntervalSince1970)).setData(
+                [K.FStore.dogNameField: dogName,
+                 K.FStore.breedField: dogBreed,
                  K.FStore.weightField: dogWeight,
                  K.FStore.heightField: dogHeight,
                  K.FStore.colorField: dogColor,
                  K.FStore.sexField: sexGlobal,
-                 K.FStore.latitudeField: latitudeGlobal,
-                 K.FStore.longitudeField: longitudeGlobal,
                  K.FStore.descriptionField: dogDescription,
                  K.FStore.postMakerField: dogPostMaker,
                  K.FStore.dateField: Date().timeIntervalSince1970,
                  K.FStore.urlField: dogImage
-                ])
-            //Accedemos al usuario para añadir el identifier a los perros que encontró
-            db.collection(K.FStore.collectionNameUsers).document(dogPostMaker).collection(K.FStore.myLostSubcollection).document(uniqueIdentifier).setData([K.FStore.uniqueDogIdentifierField:uniqueIdentifier])
-            { (error) in
+                ]) { (error) in
                 if let e = error {
                     print("There was an issue saving data to Firestore, \(e)")
                 } else{
@@ -170,7 +147,7 @@ class FoundDogViewController: UIViewController{
                         self.colorTextField.text = ""
                         //self.sexTextField.text = ""
                         self.descriptionTextField.text = ""
-                        self.performSegue(withIdentifier: K.reportHomeSegue, sender: self)
+                        self.performSegue(withIdentifier: K.myDogRegisterToHome, sender: self)
                     }
                 }
             }
@@ -180,7 +157,7 @@ class FoundDogViewController: UIViewController{
 }
 
 //MARK: -UIImagePickerControllerDelegate
-extension FoundDogViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+extension RegisterLostDogViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     
     //cuando se toma o no se toma la foto
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -190,28 +167,9 @@ extension FoundDogViewController: UIImagePickerControllerDelegate, UINavigationC
         
         if info.keys.contains(.originalImage){
             //previewImageView.isHidden = false
-            //obtenemos la imagen tomada
+         //obtenemos la imagen tomada
             photoTaken = info[.originalImage] as? UIImage
             uploadPhotoToFirebase()
-        }
-    }
-}
-
-extension FoundDogViewController: CLLocationManagerDelegate{
-    //Obtenemos resultados de la geolocalización
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let bestLocation = locations.last else {
-            return
-        }
-        //Ya tenemos la ubicación del usuario! 🐶
-        userLocation = bestLocation
-        print(userLocation?.coordinate.latitude ?? 0.0)
-        print(userLocation?.coordinate.longitude ?? 0.0)
-        
-        //Guardar longitud y latitud en la base de datos (Primero en variables globales)
-        if let longitudeInFunction = userLocation?.coordinate.longitude, let latitudeInFunction = userLocation?.coordinate.latitude{
-            longitudeGlobal = longitudeInFunction
-            latitudeGlobal = latitudeInFunction
         }
     }
 }

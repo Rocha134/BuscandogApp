@@ -16,7 +16,7 @@ struct K {
     static let myDogRegisterToHome = "myDogRegisterToHomeSegue"
     
     struct FStore {
-        static let collectionName = "dogs"
+        static let collectionName = "dogsFound"
         static let dogNameField = "dogName"
         static let dateField = "date"
         static let sexField = "sex"
@@ -37,6 +37,8 @@ struct K {
         static let cellPhoneNumberField = "cellPhoneNumber"
         static let emailField = "email"
         static let accountCreatedDateField = "accountCreatedDate"
-        static let myDogSubcollection = "myDog"
+        static let myDogSubcollection = "myDogs"
+        static let myFoundSubcollection = "myFounds"
+        static let myLostSubcollection = "myLosts"
     }
 }

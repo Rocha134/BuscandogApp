@@ -18,7 +18,7 @@ class HomeViewController: UIViewController {
     
     let db = Firestore.firestore()
     
-    var dogs : [Dog] = []
+    var dogs : [DogFound] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +28,7 @@ class HomeViewController: UIViewController {
         navigationItem.hidesBackButton = true
         tableView.register(UINib.init(nibName: K.cellNibName, bundle: nil), forCellReuseIdentifier: K.cellIdentifier)
         
-        let dogAntiError = Dog(sex: "Macho", breed: "Raza", weight: "Peso", height: "Altura", color: "Color", description: "Descripcion", image: UIImage(named: "logoWhite")!, latitude: 1.0, longitude: 1.0)
+        let dogAntiError = DogFound(sex: "Macho", breed: "Raza", weight: "Peso", height: "Altura", color: "Color", description: "Descripcion", image: UIImage(named: "logoWhite")!, latitude: 1.0, longitude: 1.0)
         
         dogs.append(dogAntiError)
         
@@ -64,7 +64,7 @@ class HomeViewController: UIViewController {
                                let dogLatitude = data[K.FStore.latitudeField] as? Double,
                                let dogLongitude = data[K.FStore.longitudeField] as? Double,
                                let dogDescription = data[K.FStore.descriptionField] as? String {
-                                let newDog = Dog(sex: dogSex, breed: dogBreed, weight: dogWeight, height: dogHeight, color: dogColor, description: dogDescription, image: procesarUrlAImagen(link: dogImage), latitude: dogLatitude, longitude: dogLongitude)
+                                let newDog = DogFound(sex: dogSex, breed: dogBreed, weight: dogWeight, height: dogHeight, color: dogColor, description: dogDescription, image: procesarUrlAImagen(link: dogImage), latitude: dogLatitude, longitude: dogLongitude)
                                 self.dogs.append(newDog)
                                 DispatchQueue.main.async {
                                     self.tableView.reloadData()

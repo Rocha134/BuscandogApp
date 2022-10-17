@@ -176,6 +176,108 @@
             </objects>
             <point key="canvasLocation" x="1803" y="-333"/>
         </scene>
+        <!--Lost Dog View Controller-->
+        <scene sceneID="QeC-Od-X6K">
+            <objects>
+                <viewController id="ykK-yi-tw5" customClass="LostDogViewController" customModule="Buscandog" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qJn-Sh-X4D">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T5E-xS-vKX">
+                                <rect key="frame" x="0.0" y="746" width="390" height="44"/>
+                                <items>
+                                    <barButtonItem title="Item" image="home" id="77o-M9-b8N"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="n3J-8o-Mwe"/>
+                                    <barButtonItem title="Item" image="heart" id="VQb-Ht-LZ0"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="eza-Sb-Upr"/>
+                                    <barButtonItem title="Item" image="search" id="riK-et-nu2"/>
+                                </items>
+                            </toolbar>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UKx-C2-Xj4">
+                                <rect key="frame" x="35" y="287" width="320" height="216"/>
+                            </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xlU-rk-PEo">
+                                <rect key="frame" x="174" y="142" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¡Busco mi mascota!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l7W-2m-vRF">
+                                <rect key="frame" x="65" y="74" width="260" height="36"/>
+                                <color key="tintColor" red="0.26666668059999998" green="0.58823531870000001" blue="0.84313726430000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="30"/>
+                                <color key="textColor" red="0.26666668059999998" green="0.58823531870000001" blue="0.84313726430000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="highlightedColor" red="0.26666668059999998" green="0.58823531870000001" blue="0.84313726430000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mascotas registradas" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TxA-K2-XHS">
+                                <rect key="frame" x="55" y="250" width="280.33333333333331" height="36"/>
+                                <color key="tintColor" red="0.26666668059999998" green="0.58823531870000001" blue="0.84313726430000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="30"/>
+                                <color key="textColor" red="0.26666668059999998" green="0.58823531870000001" blue="0.84313726430000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="highlightedColor" red="0.26666668059999998" green="0.58823531870000001" blue="0.84313726430000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zPM-Mq-ytx">
+                                <rect key="frame" x="54.333333333333343" y="680" width="281.66666666666663" height="56"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Realizar reporte">
+                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="35"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="reportAction:" destination="ykK-yi-tw5" eventType="touchUpInside" id="ONa-Zu-nOl"/>
+                                    <action selector="sendPressed:" destination="gwJ-0n-z2e" eventType="touchUpInside" id="SfF-yG-0m2"/>
+                                </connections>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="KQX-7d-JXD">
+                                <rect key="frame" x="100" y="513" width="190" height="127"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Si no tienes tu mascota registrada, te invitamos a hacerlo" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6gG-AF-d2r">
+                                        <rect key="frame" x="0.0" y="0.0" width="190" height="80"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="190" id="MFr-Ou-OKg"/>
+                                            <constraint firstAttribute="height" constant="80" id="U1a-E9-CN0"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.22287350618463142" green="0.33511430658596569" blue="0.9996703267" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g0g-dn-hPP">
+                                        <rect key="frame" x="27" y="96" width="136.33333333333334" height="31"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Registar mascota"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vri-hG-HLo"/>
+                        <color key="backgroundColor" red="0.89019608500000003" green="0.98823523520000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="T5E-xS-vKX" firstAttribute="leading" secondItem="vri-hG-HLo" secondAttribute="leading" id="7ZG-tN-YpC"/>
+                            <constraint firstItem="l7W-2m-vRF" firstAttribute="top" secondItem="vri-hG-HLo" secondAttribute="top" constant="30" id="96D-34-xgF"/>
+                            <constraint firstItem="KQX-7d-JXD" firstAttribute="centerX" secondItem="qJn-Sh-X4D" secondAttribute="centerX" id="GS7-Sg-HO7"/>
+                            <constraint firstItem="T5E-xS-vKX" firstAttribute="trailing" secondItem="vri-hG-HLo" secondAttribute="trailing" id="GzK-WW-KlN"/>
+                            <constraint firstItem="xlU-rk-PEo" firstAttribute="leading" secondItem="qJn-Sh-X4D" secondAttribute="leading" constant="174" id="JVG-g9-q6k"/>
+                            <constraint firstItem="l7W-2m-vRF" firstAttribute="centerX" secondItem="qJn-Sh-X4D" secondAttribute="centerX" id="JfO-4e-gjn"/>
+                            <constraint firstItem="TxA-K2-XHS" firstAttribute="centerX" secondItem="qJn-Sh-X4D" secondAttribute="centerX" id="Ocl-ZN-B2Q"/>
+                            <constraint firstItem="xlU-rk-PEo" firstAttribute="top" secondItem="qJn-Sh-X4D" secondAttribute="top" constant="142" id="U8v-Px-uxA"/>
+                            <constraint firstItem="zPM-Mq-ytx" firstAttribute="centerX" secondItem="qJn-Sh-X4D" secondAttribute="centerX" id="Xiq-7m-wDZ"/>
+                            <constraint firstItem="UKx-C2-Xj4" firstAttribute="centerY" secondItem="qJn-Sh-X4D" secondAttribute="centerY" id="g7G-Ru-dZN"/>
+                            <constraint firstAttribute="bottom" secondItem="T5E-xS-vKX" secondAttribute="bottom" id="gzB-1w-4B1"/>
+                            <constraint firstItem="UKx-C2-Xj4" firstAttribute="centerX" secondItem="qJn-Sh-X4D" secondAttribute="centerX" id="oUa-Tm-4iD"/>
+                            <constraint firstItem="T5E-xS-vKX" firstAttribute="top" secondItem="zPM-Mq-ytx" secondAttribute="bottom" constant="10" id="pvP-wQ-fbK"/>
+                            <constraint firstItem="KQX-7d-JXD" firstAttribute="top" secondItem="UKx-C2-Xj4" secondAttribute="bottom" constant="10" id="rH7-yy-UqN"/>
+                            <constraint firstItem="UKx-C2-Xj4" firstAttribute="top" secondItem="TxA-K2-XHS" secondAttribute="bottom" constant="1" id="rx0-Eq-18z"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Cak-1b-2kj"/>
+                    <connections>
+                        <outlet property="myDogsPickerView" destination="UKx-C2-Xj4" id="Lhi-m5-O34"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="v3T-Tc-bmG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3361.5384615384614" y="-550.23696682464447"/>
+        </scene>
         <!--Register View Controller-->
         <scene sceneID="CoV-xi-iHB">
             <objects>
@@ -472,6 +574,9 @@
                                 <buttonConfiguration key="configuration" style="plain" title="Busco mi mascota">
                                     <fontDescription key="titleFontDescription" type="boldSystem" pointSize="26"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <segue destination="ykK-yi-tw5" kind="show" id="hBV-fz-AcB"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Nw9-jY-zOB"/>
@@ -736,10 +841,10 @@
             </objects>
             <point key="canvasLocation" x="2940" y="861.61137440758284"/>
         </scene>
-        <!--Lost Dog View Controller-->
+        <!--Register Lost Dog View Controller-->
         <scene sceneID="5bB-Fg-Wex">
             <objects>
-                <viewController id="uFF-OP-pHj" customClass="LostDogViewController" customModule="Buscandog" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="uFF-OP-pHj" customClass="RegisterLostDogViewController" customModule="Buscandog" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jOJ-iV-LX3">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
