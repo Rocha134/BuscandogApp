@@ -13,7 +13,7 @@ import FirebaseFirestore
 import FirebaseStorage
 
 
-class RegisterLostDogViewController: UIViewController{
+class RegisterMyDogViewController: UIViewController{
     
     var photoTaken: UIImage?
     var urlGlobal : String?
@@ -158,7 +158,7 @@ class RegisterLostDogViewController: UIViewController{
 }
 
 //MARK: -UIImagePickerControllerDelegate
-extension RegisterLostDogViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+extension RegisterMyDogViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     
     //cuando se toma o no se toma la foto
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -174,3 +174,4 @@ extension RegisterLostDogViewController: UIImagePickerControllerDelegate, UINavi
         }
     }
 }
+

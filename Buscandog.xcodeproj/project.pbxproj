@@ -10,11 +10,11 @@
 		085643B0AA813B17B14E592D /* Pods_Buscandog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C35C151088591217E6EC1274 /* Pods_Buscandog.framework */; };
 		DA426AA328F89AE600F21FE8 /* DogFound.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA426AA228F89AE600F21FE8 /* DogFound.swift */; };
 		DA426AA528F8BD3300F21FE8 /* FoundDogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA426AA428F8BD3300F21FE8 /* FoundDogViewController.swift */; };
+		DA42B56828FDFCFE002220AC /* RegisterMyDogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA42B56728FDFCFE002220AC /* RegisterMyDogViewController.swift */; };
 		DA48A80528F879FB00602E37 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA48A80328F879FB00602E37 /* PostTableViewCell.swift */; };
 		DA48A80628F879FB00602E37 /* PostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA48A80428F879FB00602E37 /* PostTableViewCell.xib */; };
 		DA4D96DE28FB661D00F8A7F9 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4D96DD28FB661D00F8A7F9 /* DetailsViewController.swift */; };
 		DA7D0A0C28FCAE49009028CA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7D0A0B28FCAE49009028CA /* User.swift */; };
-		DA7D0A1028FCEAF7009028CA /* RegisterLostDogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7D0A0F28FCEAF7009028CA /* RegisterLostDogViewController.swift */; };
 		DA7D0A1228FCEB61009028CA /* LostDogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7D0A1128FCEB61009028CA /* LostDogViewController.swift */; };
 		DA7D0A1428FD03CA009028CA /* DogLost.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7D0A1328FD03CA009028CA /* DogLost.swift */; };
 		DA928D7928F77853002787DC /* inicioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA928D7828F77853002787DC /* inicioViewController.swift */; };
@@ -35,11 +35,11 @@
 		C9773045BC842C1A4AAB845C /* Pods-Buscandog.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Buscandog.release.xcconfig"; path = "Target Support Files/Pods-Buscandog/Pods-Buscandog.release.xcconfig"; sourceTree = "<group>"; };
 		DA426AA228F89AE600F21FE8 /* DogFound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogFound.swift; sourceTree = "<group>"; };
 		DA426AA428F8BD3300F21FE8 /* FoundDogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundDogViewController.swift; sourceTree = "<group>"; };
+		DA42B56728FDFCFE002220AC /* RegisterMyDogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterMyDogViewController.swift; sourceTree = "<group>"; };
 		DA48A80328F879FB00602E37 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		DA48A80428F879FB00602E37 /* PostTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostTableViewCell.xib; sourceTree = "<group>"; };
 		DA4D96DD28FB661D00F8A7F9 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		DA7D0A0B28FCAE49009028CA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		DA7D0A0F28FCEAF7009028CA /* RegisterLostDogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterLostDogViewController.swift; sourceTree = "<group>"; };
 		DA7D0A1128FCEB61009028CA /* LostDogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LostDogViewController.swift; sourceTree = "<group>"; };
 		DA7D0A1328FD03CA009028CA /* DogLost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogLost.swift; sourceTree = "<group>"; };
 		DA928D7828F77853002787DC /* inicioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = inicioViewController.swift; sourceTree = "<group>"; };
@@ -137,8 +137,8 @@
 				DAB487FB28F86A3D00A5ADAC /* HomeViewController.swift */,
 				DA426AA428F8BD3300F21FE8 /* FoundDogViewController.swift */,
 				DA4D96DD28FB661D00F8A7F9 /* DetailsViewController.swift */,
-				DA7D0A0F28FCEAF7009028CA /* RegisterLostDogViewController.swift */,
 				DA7D0A1128FCEB61009028CA /* LostDogViewController.swift */,
+				DA42B56728FDFCFE002220AC /* RegisterMyDogViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -283,7 +283,7 @@
 				DAB487F628F8630600A5ADAC /* RegisterViewController.swift in Sources */,
 				DA7D0A1228FCEB61009028CA /* LostDogViewController.swift in Sources */,
 				DA4D96DE28FB661D00F8A7F9 /* DetailsViewController.swift in Sources */,
-				DA7D0A1028FCEAF7009028CA /* RegisterLostDogViewController.swift in Sources */,
+				DA42B56828FDFCFE002220AC /* RegisterMyDogViewController.swift in Sources */,
 				DA7D0A0C28FCAE49009028CA /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

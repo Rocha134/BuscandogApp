@@ -118,13 +118,14 @@ class LostDogViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         let dogDate = dogs[dogSelected].date
         let dogUniqueIdentifier = dogName + dogPostMaker + String(dogDate)
             db.collection(K.FStore.collectionLostName).document(dogUniqueIdentifier).setData(
-                [K.FStore.breedField: dogBreed,
+                [K.FStore.dogNameField: dogName,
+                 K.FStore.breedField: dogBreed,
                  K.FStore.weightField: dogWeight,
                  K.FStore.heightField: dogHeight,
                  K.FStore.colorField: dogColor,
                  K.FStore.sexField: dogSex,
-                 //K.FStore.latitudeField: latitudeGlobal,
-                // K.FStore.longitudeField: longitudeGlobal,
+                 K.FStore.latitudeField: 0.1,
+                 K.FStore.longitudeField: 0.1,
                  K.FStore.descriptionField: dogDescription,
                  K.FStore.postMakerField: dogPostMaker,
                  K.FStore.dateField: Date().timeIntervalSince1970,
