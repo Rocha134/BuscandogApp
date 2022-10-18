@@ -9,10 +9,15 @@ import UIKit
 import FirebaseCore
 import FirebaseAuth
 import FirebaseFirestore
+import CoreLocation
 
 class LostDogViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
+    var longitudeGlobal = 0.0
+    var latitudeGlobal = 0.0
     
+    private var locationManager: CLLocationManager?
+    private var userLocation: CLLocation?
     
     var dogSelected : Int = 0
     
@@ -52,6 +57,22 @@ class LostDogViewController: UIViewController, UIPickerViewDataSource, UIPickerV
     override func viewDidLoad() {
         super.viewDidLoad()
         loadPosts()
+        requestLocation()
+    }
+    
+    private func requestLocation(){
+        //Validamos GPS ACTIVO
+        guard CLLocationManager.locationServicesEnabled() else {
+            print("location service is not enabled")
+            return
+        }
+        
+        locationManager = CLLocationManager()
+        locationManager?.delegate = self
+        locationManager?.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager?.requestAlwaysAuthorization()
+        locationManager?.startUpdatingLocation()
+        
     }
     
     
@@ -122,8 +143,8 @@ class LostDogViewController: UIViewController, UIPickerViewDataSource, UIPickerV
                  K.FStore.heightField: dogHeight,
                  K.FStore.colorField: dogColor,
                  K.FStore.sexField: dogSex,
-                 K.FStore.latitudeField: 0.1,
-                 K.FStore.longitudeField: 0.1,
+                 K.FStore.latitudeField: latitudeGlobal,
+                 K.FStore.longitudeField: longitudeGlobal,
                  K.FStore.descriptionField: dogDescription,
                  K.FStore.postMakerField: dogPostMaker,
                  K.FStore.dateField: Date().timeIntervalSince1970,
@@ -155,4 +176,23 @@ class LostDogViewController: UIViewController, UIPickerViewDataSource, UIPickerV
      }
      */
     
+}
+
+extension LostDogViewController: CLLocationManagerDelegate{
+    //Obtenemos resultados de la geolocalización
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let bestLocation = locations.last else {
+            return
+        }
+        //Ya tenemos la ubicación del usuario! 🐶
+        userLocation = bestLocation
+        print(userLocation?.coordinate.latitude ?? 0.0)
+        print(userLocation?.coordinate.longitude ?? 0.0)
+        
+        //Guardar longitud y latitud en la base de datos (Primero en variables globales)
+        if let longitudeInFunction = userLocation?.coordinate.longitude, let latitudeInFunction = userLocation?.coordinate.latitude{
+            longitudeGlobal = longitudeInFunction
+            latitudeGlobal = latitudeInFunction
+        }
+    }
 }
