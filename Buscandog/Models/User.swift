@@ -16,4 +16,5 @@ struct User {
     let myDogs : [DogLost]
     let myLostDogs : [String]
     let myFoundDogs : [String]
+    let myNotifications : [Notifications]
 }

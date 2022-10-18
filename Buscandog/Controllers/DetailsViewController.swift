@@ -66,13 +66,14 @@ class DetailsViewController: UIViewController{
         if let notificationAuth = Auth.auth().currentUser?.email{
             
             //Obtener notificationCellPhoneNumber
-            let docRef = db.collection(K.FStore.collectionNameUsers).document(notificationAuth as String)
-            
-            docRef.getDocument(source: .cache) { (document, error) in
-                if let document = document {
-                    self.notificationCellPhoneNumber = document.get(K.FStore.cellPhoneNumberField) as! String
-                }else{
-                    print("No document :c")
+            let docRef = db.collection(K.FStore.collectionNameUsers).document(notificationAuth)
+
+            docRef.getDocument { (document, error) in
+                if let document = document, document.exists {
+                    let dataDescription = document.data()
+                    self.notificationCellPhoneNumber = dataDescription![K.FStore.cellPhoneNumberField] as! String
+                } else {
+                    print("Document does not exist")
                 }
             }
             
