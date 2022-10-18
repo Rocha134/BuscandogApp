@@ -23,6 +23,7 @@ class NotificationsViewController: UIViewController{
         notificationsTableView.dataSource = self
         title = "Mis notificaciones 💬"
         notificationsTableView.register(UINib.init(nibName: K.cellNotificationNibName, bundle: nil), forCellReuseIdentifier: K.cellNotificationsIdentifier)
+        loadNotifications()
     }
     
     //CARGAR LA INFORMACIÓN DE LA BASE DE DATOS
@@ -77,7 +78,8 @@ extension NotificationsViewController: UITableViewDataSource{
         
         //Configure the cell´s contents.
         cell.titleLabel.text = notification.titulo
-        cell.typeLabel.text = notification.titulo
+        cell.typeLabel.text = notification.type
+        cell.numberLabel.text = notification.cellphoneNumber
         
         
         return cell
