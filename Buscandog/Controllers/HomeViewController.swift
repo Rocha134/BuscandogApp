@@ -183,37 +183,24 @@ extension HomeViewController : UITableViewDataSource{
             let dog = dogsFound[indexPath.row]
             
             // Configure the cell’s contents.
-        
-            //cell.aboutNameLabel = dog.name
-            //cell.ageLabel = dog.age
-            cell.nameLabel.isHidden = true
-            cell.aboutNameLabel.isHidden = true
-            cell.breedLabel.text = dog.breed
+            cell.nameLabel.text = "Raza: \(dog.breed)"
+            cell.aboutNameLabel.text = "About this dog"
+            cell.weightLabel.text = dog.weight
+            cell.heightLabel.text = dog.height
             cell.colorLabel.text = dog.color
             cell.descriptionLabel.text = dog.description
-            cell.heightLabel.text = dog.height
             cell.imagePost.image = dog.image
-            //cell.nameLabel.text = dog.name
-            //cell.postDateLabel.text = dog.date
-            cell.weightLabel.text = dog.weight
         }else{
             let dog = dogsLost[indexPath.row]
             
             // Configure the cell’s contents.
-        
-            //cell.aboutNameLabel = dog.name
-            //cell.ageLabel = dog.age
-            cell.nameLabel.isHidden = false
-            cell.aboutNameLabel.isHidden = false
-            cell.breedLabel.text = dog.breed
+            cell.nameLabel.text = "\(dog.name)-\(dog.breed)"
+            cell.aboutNameLabel.text = "About \(dog.name)"
+            cell.weightLabel.text = dog.weight
+            cell.heightLabel.text = dog.height
             cell.colorLabel.text = dog.color
             cell.descriptionLabel.text = dog.description
-            cell.heightLabel.text = dog.height
             cell.imagePost.image = dog.image
-            cell.nameLabel.text = dog.name
-            //cell.postDateLabel.text = dog.date
-            cell.weightLabel.text = dog.weight
-            cell.aboutNameLabel.text = "About \(dog.name)"
         }
         
         return cell

@@ -33,13 +33,13 @@
                                         <rect key="frame" x="20" y="20" width="826" height="261"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="159" translatesAutoresizingMaskIntoConstraints="NO" id="DxN-FJ-N8G">
-                                                <rect key="frame" x="0.0" y="0.0" width="521.5" height="121"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="254.5" height="121"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jix-B7-Dt0">
-                                                        <rect key="frame" x="0.0" y="28.5" width="239" height="64"/>
+                                                        <rect key="frame" x="0.0" y="50.5" width="45.5" height="20.5"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="23" translatesAutoresizingMaskIntoConstraints="NO" id="3fg-sD-ARp">
-                                                                <rect key="frame" x="0.0" y="0.0" width="215" height="64"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="45.5" height="20.5"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Itachi" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mzi-fx-Npp">
                                                                         <rect key="frame" x="0.0" y="0.0" width="45.5" height="20.5"/>
@@ -47,43 +47,12 @@
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="55" translatesAutoresizingMaskIntoConstraints="NO" id="t0h-g7-q2T">
-                                                                        <rect key="frame" x="0.0" y="43.5" width="215" height="20.5"/>
-                                                                        <subviews>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="French Bulldog" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TNr-rX-RCw">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="114.5" height="20.5"/>
-                                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                                <nil key="textColor"/>
-                                                                                <nil key="highlightedColor"/>
-                                                                            </label>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1y 4m" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a7m-Pb-7Du">
-                                                                                <rect key="frame" x="169.5" y="0.0" width="45.5" height="20.5"/>
-                                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                                <nil key="textColor"/>
-                                                                                <nil key="highlightedColor"/>
-                                                                            </label>
-                                                                        </subviews>
-                                                                    </stackView>
                                                                 </subviews>
                                                             </stackView>
-                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.crop.rectangle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="9gQ-2T-F2j">
-                                                                <rect key="frame" x="215" y="1" width="24" height="61.5"/>
-                                                            </imageView>
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="fT3-49-c7S">
-                                                        <rect key="frame" x="398" y="50.5" width="123.5" height="20.5"/>
-                                                        <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10 min ago" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L1V-9j-NNh">
-                                                                <rect key="frame" x="0.0" y="0.0" width="83" height="20.5"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="text.bubble.fill.rtl" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="xlZ-KS-Uwe">
-                                                                <rect key="frame" x="101" y="0.5" width="22.5" height="20"/>
-                                                            </imageView>
-                                                        </subviews>
+                                                        <rect key="frame" x="204.5" y="35.5" width="50" height="50"/>
                                                     </stackView>
                                                 </subviews>
                                             </stackView>
@@ -198,14 +167,11 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="aboutNameLabel" destination="Gkw-6E-xDe" id="mNB-zr-7dE"/>
-                <outlet property="ageLabel" destination="a7m-Pb-7Du" id="uc8-dP-5Cn"/>
-                <outlet property="breedLabel" destination="TNr-rX-RCw" id="MYB-Gm-fzZ"/>
                 <outlet property="colorLabel" destination="45d-Sa-H4C" id="XC4-hM-MN9"/>
                 <outlet property="descriptionLabel" destination="hUZ-m4-ZNj" id="GBP-0q-Kf6"/>
                 <outlet property="heightLabel" destination="KJn-b2-IqV" id="WlR-dg-Yma"/>
                 <outlet property="imagePost" destination="PPP-c0-0qh" id="qi9-It-Rjv"/>
                 <outlet property="nameLabel" destination="mzi-fx-Npp" id="lMP-Ga-sv6"/>
-                <outlet property="postDateLabel" destination="L1V-9j-NNh" id="RR9-1x-Cgx"/>
                 <outlet property="view1" destination="iya-FE-aYJ" id="qbh-W8-V2E"/>
                 <outlet property="weightLabel" destination="H9H-fy-WIw" id="2U2-Pi-GBj"/>
             </connections>
@@ -215,7 +181,5 @@
     <resources>
         <image name="Dog1" width="493.5" height="300"/>
         <image name="circles.hexagonpath.fill" catalog="system" width="128" height="112"/>
-        <image name="person.crop.rectangle.fill" catalog="system" width="128" height="93"/>
-        <image name="text.bubble.fill.rtl" catalog="system" width="128" height="110"/>
     </resources>
 </document>
