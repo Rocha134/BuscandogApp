@@ -7,11 +7,23 @@
 
 import UIKit
 import MapKit
+import FirebaseCore
+import FirebaseAuth
+import FirebaseFirestore
 
 class DetailsViewController: UIViewController{
     @IBOutlet weak var view1: UIView!
     var latitude: Double = 0.0
     var longitude: Double = 0.0
+    var selectedIndex: Int = 0
+    var notificationName: String = ""
+    var notificationType: String = ""
+    var notificationPostMaker: String = ""
+    var notificationCellPhoneNumber: String = ""
+    var notificationDogDate: Double = 0.0
+    
+    let db = Firestore.firestore()
+    
     var map: MKMapView?
     
     override func viewDidLoad() {
@@ -51,5 +63,34 @@ class DetailsViewController: UIViewController{
     }
     
     @IBAction func sendNumber(_ sender: UIBarButtonItem) {
+        if let notificationAuth = Auth.auth().currentUser?.email{
+            
+            //Obtener notificationCellPhoneNumber
+            let docRef = db.collection(K.FStore.collectionNameUsers).document(notificationAuth as String)
+            
+            docRef.getDocument(source: .cache) { (document, error) in
+                if let document = document {
+                    self.notificationCellPhoneNumber = document.get(K.FStore.cellPhoneNumberField) as! String
+                }else{
+                    print("No document :c")
+                }
+            }
+            
+            let notificationDate = Date().timeIntervalSince1970
+            db.collection(K.FStore.collectionNameUsers).document(notificationPostMaker).collection(K.FStore.myNotificationsSubcollection).document(notificationAuth as String + String(notificationDogDate)).setData(
+                [K.FStore.titleField: notificationName,
+                 K.FStore.notificationTypeField: notificationType,
+                 K.FStore.notificationCellPhoneNumberField: notificationCellPhoneNumber,
+                 K.FStore.dateField: notificationDate]) { (error) in
+                     if let e = error {
+                         print("There was an issue saving data to Firestore, \(e)")
+                     } else{
+                         print("Succesfully saved data")
+                         DispatchQueue.main.async {
+                             //Agregar alert "tu numero fue guardado"
+                         }
+                     }
+                 }
+        }
     }
 }

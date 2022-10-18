@@ -133,9 +133,17 @@ class HomeViewController: UIViewController {
                 if filterSelected == 0 {
                     nextViewController.longitude = dogsFound[dogSelected!].longitude
                     nextViewController.latitude = dogsFound[dogSelected!].latitude
+                    nextViewController.notificationName = dogsFound[dogSelected!].breed + dogsFound[dogSelected!].color + dogsFound[dogSelected!].sex
+                    nextViewController.notificationType = "De tu publicación de perro encontrado"
+                    nextViewController.notificationPostMaker = dogsFound[dogSelected!].dogPostMaker
+                    nextViewController.notificationDogDate = dogsFound[dogSelected!].date
                 }else{
                     nextViewController.longitude = dogsLost[dogSelected!].longitude
                     nextViewController.latitude = dogsLost[dogSelected!].latitude
+                    nextViewController.notificationName = dogsLost[dogSelected!].name
+                    nextViewController.notificationType = "De tu publicación de perro perdido"
+                    nextViewController.notificationPostMaker = dogsLost[dogSelected!].dogPostMaker
+                    nextViewController.notificationDogDate = dogsLost[dogSelected!].date
                 }
             }
             
