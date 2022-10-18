@@ -158,8 +158,8 @@ class LostDogViewController: UIViewController, UIPickerViewDataSource, UIPickerV
                 } else{
                     print("Succesfully saved data")
                     DispatchQueue.main.async {
-                        //implementar en un rato
-                        //self.performSegue(withIdentifier: K.reportHomeSegue, sender: self)
+                        //Te manda a la principal cuando todo se guarda bien
+                        self.performSegue(withIdentifier: K.reportLostHomeSegue, sender: self)
                     }
                 }
             }

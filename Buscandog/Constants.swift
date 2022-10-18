@@ -9,12 +9,15 @@ struct K {
     static let appName = "Buscandog 🐶"
     static let cellIdentifier = "PostCell"
     static let cellNibName = "PostTableViewCell"
+    static let cellNotificationsIdentifier = "NotificationCell"
+    static let cellNotificationNibName = "NotificationTableViewCell"
     static let registerSegue = "RegisterToHome"
     static let loginSegue = "LoginToHome"
     static let postDetailSegue = "postDetailSegue"
     static let reportHomeSegue = "reportToHomeSegue"
     static let myDogRegisterToHome = "myDogRegisterToHomeSegue"
     static let keepSignIn = "KeepSignInSegue"
+    static let reportLostHomeSegue = "reportLostToHomeSegue"
     
     struct FStore {
         static let collectionFoundName = "dogsFound"

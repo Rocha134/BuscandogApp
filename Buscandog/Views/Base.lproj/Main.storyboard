@@ -90,6 +90,52 @@
             </objects>
             <point key="canvasLocation" x="1041" y="115"/>
         </scene>
+        <!--Notifications View Controller-->
+        <scene sceneID="hhA-UE-cXz">
+            <objects>
+                <viewController id="8kz-XN-hvV" customClass="NotificationsViewController" customModule="Buscandog" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="XiN-pT-0DY">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gey-fS-qvh">
+                                <rect key="frame" x="0.0" y="746" width="390" height="44"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="o70-oE-uBO"/>
+                                    <barButtonItem title="Item" image="home" id="5na-65-2TZ">
+                                        <connections>
+                                            <segue destination="nfa-6r-zq8" kind="show" id="2zC-Z0-LRU"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="3av-jn-odh"/>
+                                </items>
+                            </toolbar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Ivv-0H-KZ0">
+                                <rect key="frame" x="0.0" y="44" width="390" height="702"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="1dz-A2-bdJ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="gey-fS-qvh" firstAttribute="trailing" secondItem="1dz-A2-bdJ" secondAttribute="trailing" id="Jla-hu-0jo"/>
+                            <constraint firstItem="Ivv-0H-KZ0" firstAttribute="leading" secondItem="1dz-A2-bdJ" secondAttribute="leading" id="NQA-Ht-foP"/>
+                            <constraint firstItem="1dz-A2-bdJ" firstAttribute="trailing" secondItem="Ivv-0H-KZ0" secondAttribute="trailing" id="QIo-i5-gVl"/>
+                            <constraint firstItem="1dz-A2-bdJ" firstAttribute="bottom" secondItem="gey-fS-qvh" secondAttribute="bottom" id="WWw-4q-Hv6"/>
+                            <constraint firstItem="gey-fS-qvh" firstAttribute="leading" secondItem="1dz-A2-bdJ" secondAttribute="leading" id="ZrB-tH-bDf"/>
+                            <constraint firstItem="Ivv-0H-KZ0" firstAttribute="top" secondItem="1dz-A2-bdJ" secondAttribute="top" id="cWk-ev-0LZ"/>
+                            <constraint firstItem="gey-fS-qvh" firstAttribute="top" secondItem="Ivv-0H-KZ0" secondAttribute="bottom" id="k4Y-hR-krT"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="xeZ-eH-M7d"/>
+                    <connections>
+                        <outlet property="notificationsTableView" destination="Ivv-0H-KZ0" id="sYz-kQ-Bq6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5ri-zb-Qnq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4214" y="-643"/>
+        </scene>
         <!--Login View Controller-->
         <scene sceneID="TbS-NA-v6K">
             <objects>
@@ -249,6 +295,9 @@
                                         <rect key="frame" x="27" y="96" width="136.33333333333334" height="31"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Registar mascota"/>
+                                        <connections>
+                                            <segue destination="uFF-OP-pHj" kind="show" id="V4u-o6-pEN"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -276,11 +325,12 @@
                     <navigationItem key="navigationItem" id="Cak-1b-2kj"/>
                     <connections>
                         <outlet property="myDogsPickerView" destination="UKx-C2-Xj4" id="Lhi-m5-O34"/>
+                        <segue destination="nfa-6r-zq8" kind="show" identifier="reportLostToHomeSegue" id="1gb-pP-wqb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v3T-Tc-bmG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3361.5384615384614" y="-550.23696682464447"/>
+            <point key="canvasLocation" x="3266" y="-1024"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="CoV-xi-iHB">
@@ -489,7 +539,7 @@
                                     <action selector="changeFilterAction:" destination="nfa-6r-zq8" eventType="valueChanged" id="JVE-AL-e7b"/>
                                 </connections>
                             </segmentedControl>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="MUp-nS-hwt">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="MUp-nS-hwt">
                                 <rect key="frame" x="0.0" y="75" width="390" height="671"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
@@ -524,7 +574,11 @@
                                 <action selector="logOutPressed:" destination="nfa-6r-zq8" id="dFm-oR-UkS"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Notificaciones" id="xht-Go-PjW"/>
+                        <barButtonItem key="rightBarButtonItem" title="Notificaciones" id="xht-Go-PjW">
+                            <connections>
+                                <segue destination="8kz-XN-hvV" kind="show" id="QSn-CU-pX7"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="filterSegmentedControl" destination="U2Q-Hr-NYl" id="95o-QY-LjT"/>
@@ -1061,11 +1115,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J4R-58-aNI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3931" y="862"/>
+            <point key="canvasLocation" x="3983" y="862"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="KxL-3E-qCq"/>
+        <segue reference="ew3-gu-1eB"/>
+        <segue reference="2zC-Z0-LRU"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="FoundPet" width="234" height="415.5"/>
