@@ -63,35 +63,43 @@ class DetailsViewController: UIViewController{
     }
     
     @IBAction func sendNumber(_ sender: UIBarButtonItem) {
-        if let notificationAuth = Auth.auth().currentUser?.email{
-            
+        if let currentUser = Auth.auth().currentUser?.email{
             //Obtener notificationCellPhoneNumber
-            let docRef = db.collection(K.FStore.collectionNameUsers).document(notificationAuth)
-
-            docRef.getDocument { (document, error) in
+            let docRef = db.collection(K.FStore.collectionNameUsers).document(currentUser)
+            docRef.getDocument { [self] (document, error) in
                 if let document = document, document.exists {
                     let dataDescription = document.data()
                     self.notificationCellPhoneNumber = dataDescription![K.FStore.cellPhoneNumberField] as! String
+                    print(dataDescription![K.FStore.cellPhoneNumberField] as! String)
+                    let notificationsDate = Date().timeIntervalSince1970
+                    db.collection(K.FStore.collectionNameUsers).document(notificationPostMaker).collection(K.FStore.myNotificationsSubcollection).document(currentUser as String + String(notificationDogDate)).setData(
+                        [K.FStore.titleField : self.notificationName,
+                         K.FStore.notificationTypeField : self.notificationType,
+                         K.FStore.notificationCellPhoneNumberField : self.notificationCellPhoneNumber,
+                         K.FStore.dateField : notificationsDate]) { (error) in
+                             if let e = error{
+                                 let alertController = UIAlertController(title: "Error", message: "\(e.localizedDescription)", preferredStyle: .alert)
+                                 alertController.addAction(UIAlertAction(title: "Aceptar", style: .default))
+                                 
+                                 self.present(alertController, animated: true, completion: nil)
+                                 print("\(e)")
+                             }else{
+                                 let alertController = UIAlertController(title: "Aviso", message: "Has enviado tu número con éxito.", preferredStyle: .alert)
+                                 alertController.addAction(UIAlertAction(title: "Aceptar", style: .default))
+                                 
+                                 self.present(alertController, animated: true, completion: nil)
+                                 print("A mimir")
+                             }
+                         }
                 } else {
+                    let alertController = UIAlertController(title: "Error", message: "Error al validar usuario.", preferredStyle: .alert)
+                    alertController.addAction(UIAlertAction(title: "Aceptar", style: .default))
+                    
+                    self.present(alertController, animated: true, completion: nil)
                     print("Document does not exist")
                 }
             }
             
-            let notificationDate = Date().timeIntervalSince1970
-            db.collection(K.FStore.collectionNameUsers).document(notificationPostMaker).collection(K.FStore.myNotificationsSubcollection).document(notificationAuth as String + String(notificationDogDate)).setData(
-                [K.FStore.titleField: notificationName,
-                 K.FStore.notificationTypeField: notificationType,
-                 K.FStore.notificationCellPhoneNumberField: notificationCellPhoneNumber,
-                 K.FStore.dateField: notificationDate]) { (error) in
-                     if let e = error {
-                         print("There was an issue saving data to Firestore, \(e)")
-                     } else{
-                         print("Succesfully saved data")
-                         DispatchQueue.main.async {
-                             //Agregar alert "tu numero fue guardado"
-                         }
-                     }
-                 }
         }
     }
 }

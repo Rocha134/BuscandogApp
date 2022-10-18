@@ -28,6 +28,10 @@ class LoginViewController: UIViewController {
             
             Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
                 if let e = error {
+                    let alertController = UIAlertController(title: "Error", message: "\(e.localizedDescription)", preferredStyle: .alert)
+                    alertController.addAction(UIAlertAction(title: "Aceptar", style: .default))
+                    
+                    self.present(alertController, animated: true, completion: nil)
                     print(e)
                 } else {
                     //Mantenemos la sesion iniciada

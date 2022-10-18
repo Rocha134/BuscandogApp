@@ -7,15 +7,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "0D79A44E-55E5-4B96-9C63-AFD6D44CC539"
-            shouldBeEnabled = "Yes"
+            uuid = "9AB70565-53BE-44BB-98F5-0E037BC9453F"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Buscandog/Controllers/DetailsViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
             landmarkName = "sendNumber(_:)"
             landmarkType = "7">
          </BreakpointContent>

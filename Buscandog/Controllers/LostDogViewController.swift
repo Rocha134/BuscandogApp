@@ -64,6 +64,10 @@ class LostDogViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         //Validamos GPS ACTIVO
         guard CLLocationManager.locationServicesEnabled() else {
             print("location service is not enabled")
+            let alertController = UIAlertController(title: "Error", message: "Servicio de localización no disponible.", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "Aceptar", style: .default))
+            
+            self.present(alertController, animated: true, completion: nil)
             return
         }
         
@@ -84,6 +88,10 @@ class LostDogViewController: UIViewController, UIPickerViewDataSource, UIPickerV
                 .getDocuments{ [self] (querySnapshot, error) in
                     
                     if let e = error{
+                        let alertController = UIAlertController(title: "Error", message: "\(e.localizedDescription)", preferredStyle: .alert)
+                        alertController.addAction(UIAlertAction(title: "Aceptar", style: .default))
+                        
+                        self.present(alertController, animated: true, completion: nil)
                         print("There was an issue retrieving data from Firestore. \(e)")
                     } else{
                         if let snapshotDocuments = querySnapshot?.documents{
@@ -154,6 +162,10 @@ class LostDogViewController: UIViewController, UIPickerViewDataSource, UIPickerV
             db.collection(K.FStore.collectionNameUsers).document(dogPostMaker).collection(K.FStore.myLostSubcollection).document(dogUniqueIdentifier).setData([K.FStore.uniqueDogIdentifierField:dogUniqueIdentifier])
             { (error) in
                 if let e = error {
+                    let alertController = UIAlertController(title: "Error", message: "\(e.localizedDescription)", preferredStyle: .alert)
+                    alertController.addAction(UIAlertAction(title: "Aceptar", style: .default))
+                    
+                    self.present(alertController, animated: true, completion: nil)
                     print("There was an issue saving data to Firestore, \(e)")
                 } else{
                     print("Succesfully saved data")

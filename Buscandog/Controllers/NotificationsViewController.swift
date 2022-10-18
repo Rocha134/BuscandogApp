@@ -39,6 +39,10 @@ class NotificationsViewController: UIViewController{
                     self.notifications = []
                     
                     if let e = error{
+                        let alertController = UIAlertController(title: "Error", message: "\(e.localizedDescription)", preferredStyle: .alert)
+                        alertController.addAction(UIAlertAction(title: "Aceptar", style: .default))
+                        
+                        self.present(alertController, animated: true, completion: nil)
                         print("There was an issue retrieving data from Firestore. \(e)")
                     } else{
                         if let snapshotDocuments = querySnapshot?.documents{
@@ -79,7 +83,7 @@ extension NotificationsViewController: UITableViewDataSource{
         //Configure the cell´s contents.
         cell.titleLabel.text = notification.titulo
         cell.typeLabel.text = notification.type
-        cell.numberLabel.text = notification.cellphoneNumber
+        cell.numberLabel.text = "Número: \(notification.cellphoneNumber)"
         
         
         return cell

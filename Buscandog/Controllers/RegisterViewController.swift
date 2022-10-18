@@ -40,6 +40,11 @@ class RegisterViewController: UIViewController {
             Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
                 if let e = error{
                     print(e.localizedDescription)
+                    let alertController = UIAlertController(title: "Error", message: "\(e.localizedDescription)", preferredStyle: .alert)
+                    alertController.addAction(UIAlertAction(title: "Aceptar", style: .default))
+                    
+                    self.present(alertController, animated: true, completion: nil)
+                    
                 } else {
                     //Añadimos los datos del usuario a la base de datos
                     self.db.collection(K.FStore.collectionNameUsers).document(email).setData(

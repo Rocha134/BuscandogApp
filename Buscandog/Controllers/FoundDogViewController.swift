@@ -47,6 +47,10 @@ class FoundDogViewController: UIViewController{
     private func requestLocation(){
         //Validamos GPS ACTIVO
         guard CLLocationManager.locationServicesEnabled() else {
+            let alertController = UIAlertController(title: "Error", message: "Servicio de localización no disponible.", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "Aceptar", style: .default))
+            
+            self.present(alertController, animated: true, completion: nil)
             print("location service is not enabled")
             return
         }
@@ -86,6 +90,10 @@ class FoundDogViewController: UIViewController{
                     DispatchQueue.main.async {
                         //Detener la carga
                         if let error = error{
+                            let alertController = UIAlertController(title: "Error", message: "\(error.localizedDescription)", preferredStyle: .alert)
+                            alertController.addAction(UIAlertAction(title: "Aceptar", style: .default))
+                            
+                            self.present(alertController, animated: true, completion: nil)
                             print(error.localizedDescription)
                             return
                         }
@@ -161,6 +169,10 @@ class FoundDogViewController: UIViewController{
             db.collection(K.FStore.collectionNameUsers).document(dogPostMaker).collection(K.FStore.myFoundSubcollection).document(uniqueIdentifier).setData([K.FStore.uniqueDogIdentifierField:uniqueIdentifier])
             { (error) in
                 if let e = error {
+                    let alertController = UIAlertController(title: "Error", message: "\(e.localizedDescription)", preferredStyle: .alert)
+                    alertController.addAction(UIAlertAction(title: "Aceptar", style: .default))
+                    
+                    self.present(alertController, animated: true, completion: nil)
                     print("There was an issue saving data to Firestore, \(e)")
                 } else{
                     print("Succesfully saved data")
@@ -175,6 +187,12 @@ class FoundDogViewController: UIViewController{
                     }
                 }
             }
+        } else{
+            let alertController = UIAlertController(title: "Error", message: "Faltan campos por llenar.", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "Aceptar", style: .default))
+            
+            self.present(alertController, animated: true, completion: nil)
+
         }
     }
     

@@ -138,6 +138,10 @@ class RegisterMyDogViewController: UIViewController{
                  K.FStore.urlField: dogImage
                 ]) { (error) in
                 if let e = error {
+                    let alertController = UIAlertController(title: "Error", message: "\(e.localizedDescription)", preferredStyle: .alert)
+                    alertController.addAction(UIAlertAction(title: "Aceptar", style: .default))
+                    
+                    self.present(alertController, animated: true, completion: nil)
                     print("There was an issue saving data to Firestore, \(e)")
                 } else{
                     print("Succesfully saved data")
@@ -152,6 +156,12 @@ class RegisterMyDogViewController: UIViewController{
                     }
                 }
             }
+        } else{
+            let alertController = UIAlertController(title: "Error", message: "Faltan campos por llenar.", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "Aceptar", style: .default))
+            
+            self.present(alertController, animated: true, completion: nil)
+
         }
     }
     
