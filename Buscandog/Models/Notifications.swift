@@ -8,7 +8,6 @@
 import Foundation
 
 struct Notifications {
-    let id : String
     let type : String
     let cellphoneNumber : String
     // Encontrado: breed + color + sex

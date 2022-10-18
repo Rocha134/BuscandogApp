@@ -45,5 +45,10 @@ struct K {
         static let myDogSubcollection = "myDogs"
         static let myFoundSubcollection = "myFounds"
         static let myLostSubcollection = "myLosts"
+        static let myNotificationsSubcollection = "myNotifications"
+        
+        static let titleField = "title"
+        static let notificationCellPhoneNumberField = "cellPhoneNumber"
+        static let notificationTypeField = "type"
     }
 }
