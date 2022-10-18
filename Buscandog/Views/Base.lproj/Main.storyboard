@@ -688,38 +688,33 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="OPS-kx-whQ"/>
                                 </items>
                             </toolbar>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="xAv-tY-Wqy">
-                                <rect key="frame" x="58" y="5" width="298" height="179"/>
-                                <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="buscandogBlue" translatesAutoresizingMaskIntoConstraints="NO" id="qWY-Cz-sP9">
-                                        <rect key="frame" x="40" y="0.0" width="218" height="97"/>
-                                    </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dbI-ng-UVS">
-                                        <rect key="frame" x="70" y="105" width="158" height="30"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" title="Agregar foto de perro"/>
-                                        <connections>
-                                            <action selector="photoButton:" destination="gwJ-0n-z2e" eventType="touchUpInside" id="21x-HJ-aZg"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Encontré una mascota" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d0o-cr-00E">
-                                        <rect key="frame" x="0.0" y="143" width="298" height="36"/>
-                                        <color key="tintColor" red="0.26666668059999998" green="0.58823531870000001" blue="0.84313726430000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="30"/>
-                                        <color key="textColor" red="0.26666668059999998" green="0.58823531870000001" blue="0.84313726430000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <color key="highlightedColor" red="0.26666668059999998" green="0.58823531870000001" blue="0.84313726430000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                    </label>
-                                </subviews>
-                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Encontré una mascota" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d0o-cr-00E">
+                                <rect key="frame" x="58" y="152" width="298" height="36"/>
+                                <color key="tintColor" red="0.26666668059999998" green="0.58823531870000001" blue="0.84313726430000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="30"/>
+                                <color key="textColor" red="0.26666668059999998" green="0.58823531870000001" blue="0.84313726430000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="highlightedColor" red="0.26666668059999998" green="0.58823531870000001" blue="0.84313726430000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dbI-ng-UVS">
+                                <rect key="frame" x="128" y="117" width="158" height="30"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Agregar foto de perro"/>
+                                <connections>
+                                    <action selector="photoButton:" destination="gwJ-0n-z2e" eventType="touchUpInside" id="21x-HJ-aZg"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="buscandogBlue" translatesAutoresizingMaskIntoConstraints="NO" id="qWY-Cz-sP9">
+                                <rect key="frame" x="98" y="0.0" width="218" height="97"/>
+                            </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="54" translatesAutoresizingMaskIntoConstraints="NO" id="DHD-D5-bJL">
-                                <rect key="frame" x="30" y="194" width="354" height="458"/>
+                                <rect key="frame" x="57" y="210.33333333333334" width="300" height="295.66666666666663"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="44" translatesAutoresizingMaskIntoConstraints="NO" id="EUm-Ya-7IJ">
-                                        <rect key="frame" x="27" y="0.0" width="300" height="348"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="295.66666666666669"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="yea-rI-zfe">
-                                                <rect key="frame" x="0.0" y="26.333333333333343" width="300" height="295.66666666666663"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="300" height="295.66666666666669"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Raza" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bHF-fK-gVU">
                                                         <rect key="frame" x="0.0" y="0.0" width="37.333333333333336" height="20.333333333333332"/>
@@ -823,31 +818,35 @@
                                             </stackView>
                                         </subviews>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6ZS-CU-Xl9">
-                                        <rect key="frame" x="36.333333333333343" y="402" width="281.66666666666663" height="56"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Realizar reporte">
-                                            <fontDescription key="titleFontDescription" type="boldSystem" pointSize="35"/>
-                                        </buttonConfiguration>
-                                        <connections>
-                                            <action selector="sendPressed:" destination="gwJ-0n-z2e" eventType="touchUpInside" id="O6S-P0-yYr"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6ZS-CU-Xl9">
+                                <rect key="frame" x="66.333333333333343" y="616" width="281.66666666666663" height="56"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Realizar reporte">
+                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="35"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="sendPressed:" destination="gwJ-0n-z2e" eventType="touchUpInside" id="O6S-P0-yYr"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="1sk-KX-Qad"/>
                         <color key="backgroundColor" red="0.89019608500000003" green="0.98823523520000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="1sk-KX-Qad" firstAttribute="bottom" secondItem="UrS-1J-7Fh" secondAttribute="bottom" id="5Ca-rf-V5i"/>
-                            <constraint firstItem="UrS-1J-7Fh" firstAttribute="top" secondItem="DHD-D5-bJL" secondAttribute="bottom" constant="20" id="5M5-rF-DkQ"/>
-                            <constraint firstItem="xAv-tY-Wqy" firstAttribute="centerX" secondItem="CyU-oV-vCc" secondAttribute="centerX" id="5Tz-8W-CPr"/>
-                            <constraint firstItem="DHD-D5-bJL" firstAttribute="leading" secondItem="CyU-oV-vCc" secondAttribute="leadingMargin" constant="10" id="JtH-jV-1v8"/>
-                            <constraint firstItem="xAv-tY-Wqy" firstAttribute="top" secondItem="1sk-KX-Qad" secondAttribute="top" constant="5" id="TkL-xT-hJE"/>
-                            <constraint firstItem="DHD-D5-bJL" firstAttribute="top" secondItem="xAv-tY-Wqy" secondAttribute="bottom" constant="10" id="UcJ-H8-O5e"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="DHD-D5-bJL" secondAttribute="trailing" constant="10" id="mph-ve-yUZ"/>
-                            <constraint firstItem="UrS-1J-7Fh" firstAttribute="leading" secondItem="1sk-KX-Qad" secondAttribute="leading" id="oYE-8Z-1rk"/>
-                            <constraint firstAttribute="trailing" secondItem="UrS-1J-7Fh" secondAttribute="trailing" id="zao-1D-hjV"/>
+                            <constraint firstItem="DHD-D5-bJL" firstAttribute="centerX" secondItem="CyU-oV-vCc" secondAttribute="centerX" id="3j7-Ue-ysg"/>
+                            <constraint firstItem="DHD-D5-bJL" firstAttribute="centerY" secondItem="CyU-oV-vCc" secondAttribute="centerY" id="ICh-Il-ngI"/>
+                            <constraint firstItem="qWY-Cz-sP9" firstAttribute="centerX" secondItem="CyU-oV-vCc" secondAttribute="centerX" id="Ml2-cL-e5m"/>
+                            <constraint firstItem="UrS-1J-7Fh" firstAttribute="bottom" secondItem="1sk-KX-Qad" secondAttribute="bottom" id="R19-Jc-wt9"/>
+                            <constraint firstItem="UrS-1J-7Fh" firstAttribute="leading" secondItem="1sk-KX-Qad" secondAttribute="leading" id="b75-Il-0FK"/>
+                            <constraint firstItem="dbI-ng-UVS" firstAttribute="centerX" secondItem="CyU-oV-vCc" secondAttribute="centerX" id="dY7-Fi-YcE"/>
+                            <constraint firstItem="UrS-1J-7Fh" firstAttribute="top" secondItem="6ZS-CU-Xl9" secondAttribute="bottom" id="fhK-MN-hPH"/>
+                            <constraint firstItem="d0o-cr-00E" firstAttribute="centerX" secondItem="CyU-oV-vCc" secondAttribute="centerX" id="g7B-Tr-ND2"/>
+                            <constraint firstItem="qWY-Cz-sP9" firstAttribute="top" secondItem="1sk-KX-Qad" secondAttribute="top" id="gpx-If-v9E"/>
+                            <constraint firstItem="UrS-1J-7Fh" firstAttribute="trailing" secondItem="1sk-KX-Qad" secondAttribute="trailing" id="jaI-jg-LjQ"/>
+                            <constraint firstItem="6ZS-CU-Xl9" firstAttribute="centerX" secondItem="CyU-oV-vCc" secondAttribute="centerX" id="tK1-0x-YBu"/>
+                            <constraint firstItem="dbI-ng-UVS" firstAttribute="top" secondItem="qWY-Cz-sP9" secondAttribute="bottom" constant="20" id="vG0-6z-015"/>
+                            <constraint firstItem="d0o-cr-00E" firstAttribute="top" secondItem="dbI-ng-UVS" secondAttribute="bottom" constant="5" id="xTW-0B-zaZ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="T2s-nQ-Gyl"/>
@@ -1116,7 +1115,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="V4u-o6-pEN"/>
-        <segue reference="KxL-3E-qCq"/>
+        <segue reference="oSq-dI-EbD"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="FoundPet" width="234" height="415.5"/>
